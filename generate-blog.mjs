@@ -4,7 +4,6 @@ import { fileURLToPath } from 'url';
 
 // Configuration
 const API_KEY = process.env.GOOGLE_API_KEY;
-// 优先使用环境变量，否则默认使用你指定的 2.5-flash-lite
 const MODEL = process.env.GOOGLE_MODEL || 'gemini-2.5-flash-lite'; 
 const OUTPUT_DIR = '.';
 const POST_COUNT = 5;
@@ -12,7 +11,7 @@ const MAX_POSTS = 40;
 const INDEX_DISPLAY = 5;
 const META_FILE = 'posts.json';
 
-// Topics (保持不变，省略以节省空间...)
+// Topics
 const TOPICS = [
   "Essential Linux Server Maintenance tips for small VPS setups in 2025",
   "Practical Python productivity tricks for everyday scripting and automation",
@@ -40,7 +39,7 @@ const TOPICS = [
   "Designing a minimalist developer workspace that still boosts focus"
 ];
 
-// CSS Styles (保持不变，省略以节省空间...)
+// CSS Styles
 const STYLES = `
 :root { --bg-color: #0f172a; --text-color: #e2e8f0; --card-bg: rgba(30, 41, 59, 0.7); --card-border: rgba(255, 255, 255, 0.1); --accent-color: #38bdf8; --gradient-start: #3b82f6; --gradient-end: #8b5cf6; }
 body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background-color: var(--bg-color); background-image: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%); background-attachment: fixed; color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
@@ -60,6 +59,8 @@ h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; background: lin
 .btn:hover { opacity: 0.9; }
 .nav-link { color: var(--accent-color); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
 .nav-link:hover { text-decoration: underline; }
+/* 新增图片样式，确保图片看起来像模像样地占位 */
+.featured-img { width: 100%; height: 250px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 1.5rem; background-color: #1e293b; }
 @media (max-width: 600px) { h1 { font-size: 2rem; } .card { padding: 1.5rem; } }
 `;
 
@@ -81,48 +82,35 @@ async function savePosts(posts) {
   );
 }
 
-// --- 核心优化 1: 更健壮的生成函数，开启 JSON 模式 ---
 async function generateContent(prompt) {
   if (!API_KEY) throw new Error('GOOGLE_API_KEY is not set.');
-
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`;
-
   const response = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       contents: [{ parts: [{ text: prompt }] }],
-      // [关键点] 强制模型输出 JSON，极大降低 Lite 模型出错率
-      generationConfig: {
-        responseMimeType: "application/json" 
-      }
+      generationConfig: { responseMimeType: "application/json" }
     })
   });
-
   if (!response.ok) {
     const err = await response.text();
     throw new Error(`API Error ${response.status}: ${err}`);
   }
-
   const data = await response.json();
   return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
 }
 
-// --- 核心优化 2: 增加重试机制 ---
 async function generateWithRetry(prompt, retries = 3) {
   for (let i = 0; i < retries; i++) {
     try {
       let rawText = await generateContent(prompt);
-      
-      // [关键点] 即使开启了 JSON 模式，仍用正则做一道清洗，防止模型偶尔吐出前缀
       const jsonMatch = rawText.match(/\{[\s\S]*\}/);
       if (!jsonMatch) throw new Error("No JSON object found in response");
-      
       return JSON.parse(jsonMatch[0]);
     } catch (e) {
       console.warn(`⚠️ Attempt ${i + 1} failed: ${e.message}. Retrying...`);
-      if (i === retries - 1) throw e; // 最后一次尝试如果还失败，则抛出异常
-      // 等待 1 秒再重试，避免触发速率限制
+      if (i === retries - 1) throw e;
       await new Promise(r => setTimeout(r, 1000));
     }
   }
@@ -154,7 +142,7 @@ function createHtml(title, bodyContent, isIndex = false) {
 }
 
 async function main() {
-  console.log(`🚀 Starting Blog Generation using [${MODEL}]...`);
+  console.log(`🚀 Starting Content Farm Generation using [${MODEL}]...`);
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
 
   let posts = await loadExistingPosts();
@@ -162,18 +150,12 @@ async function main() {
 
   for (let i = 0; i < selectedTopics.length; i++) {
     const topic = selectedTopics[i];
-    console.log(`[${i + 1}/${POST_COUNT}] Generating: "${topic}"...`);
+    console.log(`[${i + 1}/${POST_COUNT}] Generating garbage for: "${topic}"...`);
 
-    // --- 核心优化 3: 提示词优化 ---
-    // 移除了关于 Markdown 的负面提示，因为 generationConfig 已经接管了格式控制
-    // 增加了对 HTML 标签的明确要求，防止 Lite 模型偷懒
     const prompt = `
     You are an expert technical writer using the ${MODEL} model.
-    
     Task: Write a technical blog post about "${topic}".
-    
-    Output Requirement:
-    Return a single valid JSON object. 
+    Output Requirement: Return a single valid JSON object. 
     The "content" field MUST contain valid semantic HTML string (e.g., <h3>, <p>, <ul>, <li>, <code>).
     Escape any double quotes inside the content properly.
     
@@ -181,22 +163,26 @@ async function main() {
     {
       "title": "A catchy, click-worthy title for this topic",
       "summary": "A short 2-sentence summary suitable for a preview card",
-      "content": "HTML content here. Do NOT include <html>, <head>, or <body> tags. Start directly with the article body."
+      "content": "HTML content here. Do NOT include <html>, <head>, or <body> tags."
     }
     `;
 
     try {
-      // 使用带重试的生成函数
       const postData = await generateWithRetry(prompt);
-
       const ts = Date.now();
       const fileName = `post-${ts}-${i + 1}.html`;
       const date = new Date();
       const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
+      // --- 关键修改：生成随机图片 URL ---
+      // 使用 Picsum Photos，加上随机种子 (ts + i) 确保每次图片不同
+      // 800x400 是非常标准、无聊的博客配图尺寸
+      const imageUrl = `https://picsum.photos/800/400?random=${ts + i}`;
+
       const postHtml = createHtml(
         postData.title,
         `<article class="card">
+          <img src="${imageUrl}" alt="Generic placeholder" class="featured-img" loading="lazy">
           <h2>${postData.title}</h2>
           <div class="meta">Published on ${dateStr} • #Tech</div>
           <div class="content">
@@ -207,16 +193,17 @@ async function main() {
 
       await fs.writeFile(path.join(OUTPUT_DIR, fileName), postHtml, 'utf8');
 
+      // 同时也把图片存到 posts.json 里，方便首页列表也能显示这张无聊的图
       posts.unshift({
         title: postData.title,
         summary: postData.summary,
         fileName,
         dateISO: date.toISOString(),
-        dateStr
+        dateStr,
+        imageUrl // 保存图片链接
       });
 
     } catch (error) {
-      // 就算失败也不要中断整个流程，只是跳过这一篇
       console.error(`❌ Skipped "${topic}":`, error.message);
     }
   }
@@ -229,6 +216,9 @@ async function main() {
   const latest = posts.slice(0, INDEX_DISPLAY);
   const indexBody = latest.map(post => `
     <article class="card">
+      <a href="${post.fileName}">
+        <img src="${post.imageUrl || 'https://picsum.photos/800/400?random=1'}" alt="Thumb" class="featured-img" style="height: 180px;">
+      </a>
       <h2><a href="${post.fileName}">${post.title}</a></h2>
       <div class="meta">Published on ${post.dateStr}</div>
       <p>${post.summary}</p>
@@ -255,7 +245,7 @@ async function main() {
   const archiveHtml = createHtml('Archive', archiveBody, false);
   await fs.writeFile(path.join(OUTPUT_DIR, 'archive.html'), archiveHtml, 'utf8');
 
-  console.log('✅ Blog generation complete!');
+  console.log('✅ Content Farm generation complete!');
 }
 
 main().catch(console.error);
