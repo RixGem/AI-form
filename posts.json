@@ -1,5 +1,40 @@
 [
   {
+    "title": "TypeScript Generics: Is Your Code Being Mind-Controlled by Big Interfaces?",
+    "summary": "Unravel the opaque enigmas of TypeScript generics, the shadowy architects of type safety, and reclaim your codebase from the clutches of algorithmic overlords.",
+    "fileName": "post-1765098850877-5.html",
+    "dateStr": "12/7/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Making%20sense%20of%20advanced%20TypeScript%20generics%20in%20everyday%20codebases%20cyberpunk%20tech%20glitch"
+  },
+  {
+    "title": "The Synth-Fingers' Secret: Why Your Neural Interface Demands a Tactile Keyboard",
+    "summary": "Unlock the chrono-synaptic advantages of analog input. This guide decodes the obsession with mechanical keyboards, from sonic feedback loops to bio-metric keystroke optimization. Optimize your data-stream.",
+    "fileName": "post-1765098833549-4.html",
+    "dateStr": "12/7/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Why%20so%20many%20developers%20care%20about%20mechanical%20keyboards%20and%20how%20to%20choose%20one%20cyberpunk%20tech%20glitch"
+  },
+  {
+    "title": "Unleash Your Inner Code-Gorgon: Minimalist Setup, Maximum Neural Overclocking!",
+    "summary": "Stop drowning in desk detritus! We reveal the quantum-entangled secrets to a spartan dev zone that supercharges your cognitive flux and silences the ambient data-static.",
+    "fileName": "post-1765098812822-3.html",
+    "dateStr": "12/7/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Designing%20a%20minimalist%20developer%20workspace%20that%20still%20boosts%20focus%20cyberpunk%20tech%20glitch"
+  },
+  {
+    "title": "Circuit Breakers: Your Only Hope Against the Glitchocalypse!",
+    "summary": "Learn how to insulate your precious data-streams from cascading failure and existential dread with sophisticated circuit breaker patterns and desperate fallback protocols.",
+    "fileName": "post-1765098795466-2.html",
+    "dateStr": "12/7/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Designing%20resilient%20microservices%20using%20circuit%20breakers%20and%20fallback%20strategies%20cyberpunk%20tech%20glitch"
+  },
+  {
+    "title": "Prometheus & Grafana: The Cybernetic Ocular Implants for Your Data Stream!",
+    "summary": "Unlock unparalleled insight into your network's neural pathways. Visualize the digital ether and tame the data hydra with this essential techno-liturgical guide.",
+    "fileName": "post-1765098778976-1.html",
+    "dateStr": "12/7/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Setting%20up%20effective%20infrastructure%20monitoring%20with%20Prometheus%20and%20Grafana%20cyberpunk%20tech%20glitch"
+  },
+  {
     "title": "Grid vs. Flexbox in 2025: Mastering Modern CSS Layout",
     "summary": "Navigate the world of modern CSS layouts with confidence. This post breaks down when to use Grid and when to reach for Flexbox in 2025.",
     "fileName": "post-1765096631375-5.html",
