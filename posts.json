@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "title": "Vim vs. Emacs: A Pragmatic Showdown from a Veteran Developer's Keyboard",
+    "summary": "After decades navigating the text editor landscape, a seasoned developer offers a neutral take on the eternal Vim vs. Emacs debate. Discover which might truly suit your workflow.",
+    "fileName": "post-1765095121994-5.html",
+    "dateISO": "2025-12-07T08:12:01.994Z",
+    "dateStr": "December 7, 2025"
+  },
+  {
+    "title": "eBPF: The Superpower for Sysadmins (No Magic Required!)",
+    "summary": "Unlock the potential of eBPF, a revolutionary Linux technology, with this beginner-friendly guide. Discover how it empowers system administrators with unprecedented visibility and control.",
+    "fileName": "post-1765095116039-4.html",
+    "dateISO": "2025-12-07T08:11:56.039Z",
+    "dateStr": "December 7, 2025"
+  },
+  {
+    "title": "Boost Your Python Scripting: 7 Productivity Hacks for Everyday Automation",
+    "summary": "Tired of repetitive tasks slowing you down? Discover practical Python tricks that will revolutionize your daily scripting and automation workflow. Write cleaner, faster, and more efficient Python code with these essential tips.",
+    "fileName": "post-1765095105809-3.html",
+    "dateISO": "2025-12-07T08:11:45.809Z",
+    "dateStr": "December 7, 2025"
+  },
+  {
+    "title": "Boost Your Site Speed: LCP & CLS Optimizations for Modern Frontends",
+    "summary": "Unlock lightning-fast load times and a smoother user experience by mastering modern frontend techniques for Largest Contentful Paint (LCP) and Cumulative Layout Shift (CLS). This post dives into actionable strategies to significantly improve your website's performance.",
+    "fileName": "post-1765095100843-2.html",
+    "dateISO": "2025-12-07T08:11:40.843Z",
+    "dateStr": "December 7, 2025"
+  },
+  {
+    "title": "Click, Clack, Code: Why Developers Love Mechanical Keyboards (and How to Pick Yours)",
+    "summary": "Discover the tactile appeal and ergonomic benefits that have made mechanical keyboards a must-have for developers. Learn what to look for to find your perfect typing companion.",
+    "fileName": "post-1765095092711-1.html",
+    "dateISO": "2025-12-07T08:11:32.711Z",
+    "dateStr": "December 7, 2025"
+  }
+]
