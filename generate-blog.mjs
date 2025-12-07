@@ -272,7 +272,7 @@ Return ONLY a JSON object with the following structure (no markdown code fences 
 }
 `;
 
-    try {
+      try {
       let rawText = await generateContent(prompt);
 
       // 清理可能出现的 `````` 包裹
