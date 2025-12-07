@@ -5,19 +5,22 @@ import { fileURLToPath } from 'url';
 // Configuration
 const API_KEY = process.env.GOOGLE_API_KEY;
 const MODEL = process.env.GOOGLE_MODEL || 'gemini-1.5-pro';
-const OUTPUT_DIR = '.';
-const POST_COUNT = 5;
+const OUTPUT_DIR = '.';          // 生成到仓库根目录
+const POST_COUNT = 5;            // 每次新生成多少篇
+const MAX_POSTS = 40;            // posts.json 中最多保留多少篇历史
+const INDEX_DISPLAY = 5;         // 首页展示多少篇
+const META_FILE = 'posts.json';  // 元数据文件名
 
 // Topics for generation
 const TOPICS = [
-    "Essential Linux Server Maintenance Tips for 2025",
-    "Python Productivity Hacks You Might Have Missed",
-    "Modern Frontend Performance Optimization Techniques",
-    "The Art of Coffee Brewing for Developers",
-    "Understanding WebSocket Protocol Deep Dive",
-    "Securing Your Cloudflare Worker Deployments",
-    "Vim vs Emacs: A Neutral Perspective",
-    "Introduction to eBPF for System Administrators"
+  "Essential Linux Server Maintenance Tips for 2025",
+  "Python Productivity Hacks You Might Have Missed",
+  "Modern Frontend Performance Optimization Techniques",
+  "The Art of Coffee Brewing for Developers",
+  "Understanding WebSocket Protocol Deep Dive",
+  "Securing Your Cloudflare Worker Deployments",
+  "Vim vs Emacs: A Neutral Perspective",
+  "Introduction to eBPF for System Administrators"
 ];
 
 // CSS Styles (Glassmorphism & Responsive)
@@ -154,71 +157,92 @@ h1 {
 }
 `;
 
+// 读取已有的 posts.json（如果不存在就返回空数组）
+async function loadExistingPosts() {
+  try {
+    const json = await fs.readFile(path.join(OUTPUT_DIR, META_FILE), 'utf8');
+    const data = JSON.parse(json);
+    return Array.isArray(data) ? data : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+// 保存新的 posts.json
+async function savePosts(posts) {
+  await fs.writeFile(
+    path.join(OUTPUT_DIR, META_FILE),
+    JSON.stringify(posts, null, 2),
+    'utf8'
+  );
+}
+
 // Helper: Generate content using Gemini API
 async function generateContent(prompt) {
-    if (!API_KEY) {
-        throw new Error('GOOGLE_API_KEY environment variable is not set.');
-    }
+  if (!API_KEY) {
+    throw new Error('GOOGLE_API_KEY environment variable is not set.');
+  }
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`;
 
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }]
-        })
-    });
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }]
+    })
+  });
 
-    if (!response.ok) {
-        const err = await response.text();
-        throw new Error(`Gemini API Error: ${response.status} ${response.statusText}\n${err}`);
-    }
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error(`Gemini API Error: ${response.status} ${response.statusText}\n${err}`);
+  }
 
-    const data = await response.json();
-    return data.candidates[0].content.parts[0].text;
+  const data = await response.json();
+  return data.candidates[0].content.parts[0].text;
 }
 
 // Helper: Create HTML page
 function createHtml(title, bodyContent, isIndex = false) {
-    return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${title} - Tech Insights</title>
-    <style>${STYLES}</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${title} - Tech Insights</title>
+  <style>${STYLES}</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Tech Insights</h1>
-            <p class="subtitle">Exploring the frontier of modern development</p>
-            ${!isIndex ? '<div style="margin-top:1rem"><a href="index.html" class="nav-link">← Back to Home</a></div>' : ''}
-        </header>
-        ${bodyContent}
-        <footer style="text-align:center; color:#64748b; margin-top:4rem; padding-bottom:2rem;">
-            &copy; ${new Date().getFullYear()} Tech Insights Blog. All rights reserved.
-        </footer>
-    </div>
+  <div class="container">
+    <header>
+      <h1>Tech Insights</h1>
+      <p class="subtitle">Exploring the frontier of modern development</p>
+      ${!isIndex ? '<div style="margin-top:1rem"><a href="index.html" class="nav-link">← Back to Home</a></div>' : ''}
+    </header>
+    ${bodyContent}
+    <footer style="text-align:center; color:#64748b; margin-top:4rem; padding-bottom:2rem;">
+      &copy; ${new Date().getFullYear()} Tech Insights Blog. All rights reserved.
+    </footer>
+  </div>
 </body>
 </html>`;
 }
 
 async function main() {
-    console.log('🚀 Starting Blog Generation...');
+  console.log('🚀 Starting Blog Generation...');
 
-    // Ensure output directory exists
-    await fs.mkdir(OUTPUT_DIR, { recursive: true });
+  await fs.mkdir(OUTPUT_DIR, { recursive: true });
 
-    const posts = [];
-    const selectedTopics = TOPICS.sort(() => 0.5 - Math.random()).slice(0, POST_COUNT);
+  // 1. 读取历史元数据
+  let posts = await loadExistingPosts();
 
-    for (let i = 0; i < selectedTopics.length; i++) {
-        const topic = selectedTopics[i];
-        console.log(`[${i + 1}/${POST_COUNT}] Generating post for: "${topic}"...`);
+  const selectedTopics = TOPICS.sort(() => 0.5 - Math.random()).slice(0, POST_COUNT);
 
-        const prompt = `
+  for (let i = 0; i < selectedTopics.length; i++) {
+    const topic = selectedTopics[i];
+    console.log(`[${i + 1}/${POST_COUNT}] Generating post for: "${topic}"...`);
+
+    const prompt = `
       Write a technical blog post about "${topic}".
       Return ONLY a JSON object with the following structure (no markdown formatting blocks):
       {
@@ -228,52 +252,95 @@ async function main() {
       }
     `;
 
-        try {
-            let rawText = await generateContent(prompt);
-            // Clean up potential markdown code blocks if the model adds them
-            rawText = rawText.replace(/```json/g, '').replace(/```/g, '').trim();
+    try {
+      let rawText = await generateContent(prompt);
+      rawText = rawText.replace(/``````/g, '').trim();
 
-            const postData = JSON.parse(rawText);
-            const fileName = `post-${i + 1}.html`;
-            const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      const postData = JSON.parse(rawText);
 
-            // Save post metadata for index
-            posts.push({ ...postData, fileName, dateStr });
+      // 用时间戳避免与历史文件重名
+      const ts = Date.now();
+      const fileName = `post-${ts}-${i + 1}.html`;
 
-            // 1. Generate Individual Post HTML
-            const postHtml = createHtml(
-                postData.title,
-                `<article class="card">
-            <h2>${postData.title}</h2>
-            <div class="meta">Published on ${dateStr} • #Tech</div>
-            <div class="content">
-                ${postData.content}
-            </div>
-         </article>`
-            );
+      const date = new Date();
+      const dateStr = date.toLocaleDateString('en-US', {
+        year: 'numeric', month: 'long', day: 'numeric'
+      });
 
-            await fs.writeFile(fileName, postHtml);
+      // 生成单篇文章 HTML
+      const postHtml = createHtml(
+        postData.title,
+        `<article class="card">
+          <h2>${postData.title}</h2>
+          <div class="meta">Published on ${dateStr} • #Tech</div>
+          <div class="content">
+            ${postData.content}
+          </div>
+        </article>`
+      );
 
-        } catch (error) {
-            console.error(`❌ Failed to generate post for "${topic}":`, error.message);
-        }
+      await fs.writeFile(path.join(OUTPUT_DIR, fileName), postHtml, 'utf8');
+
+      // 新文章插到列表最前面
+      posts.unshift({
+        title: postData.title,
+        summary: postData.summary,
+        fileName,
+        dateISO: date.toISOString(),
+        dateStr
+      });
+
+    } catch (error) {
+      console.error(`❌ Failed to generate post for "${topic}":`, error.message);
     }
+  }
 
-    // 2. Generate Index HTML
-    console.log('Creating index page...');
-    const indexBody = posts.map(post => `
+  // 2. 截断历史，只保留最近 MAX_POSTS 篇
+  posts.sort((a, b) => new Date(b.dateISO) - new Date(a.dateISO));
+  posts = posts.slice(0, MAX_POSTS);
+
+  // 3. 写回 posts.json
+  await savePosts(posts);
+
+  // 4. 生成首页（只展示最近 INDEX_DISPLAY 篇）
+  console.log('Creating index page...');
+  const latest = posts.slice(0, INDEX_DISPLAY);
+
+  const indexBody = latest.map(post => `
     <article class="card">
-        <h2><a href="${post.fileName}">${post.title}</a></h2>
-        <div class="meta">Published on ${post.dateStr}</div>
-        <p>${post.summary}</p>
-        <a href="${post.fileName}" class="btn">Read Article</a>
+      <h2><a href="${post.fileName}">${post.title}</a></h2>
+      <div class="meta">Published on ${post.dateStr}</div>
+      <p>${post.summary}</p>
+      <a href="${post.fileName}" class="btn">Read Article</a>
     </article>
   `).join('');
 
-    const indexHtml = createHtml('Home', indexBody, true);
-    await fs.writeFile('index.html', indexHtml);
+  const indexHtml = createHtml(
+    'Home',
+    indexBody + `
+      <div style="text-align:center; margin-top:2rem;">
+        <a href="archive.html" class="nav-link">View full archive →</a>
+      </div>
+    `,
+    true
+  );
+  await fs.writeFile(path.join(OUTPUT_DIR, 'index.html'), indexHtml, 'utf8');
 
-    console.log('✅ Blog generation complete! Files saved to:', OUTPUT_DIR);
+  // 5. 生成归档页（展示所有保留的历史）
+  console.log('Creating archive page...');
+  const archiveBody = posts.map(post => `
+    <article class="card">
+      <h2><a href="${post.fileName}">${post.title}</a></h2>
+      <div class="meta">Published on ${post.dateStr}</div>
+      <p>${post.summary}</p>
+      <a href="${post.fileName}" class="btn">Read Article</a>
+    </article>
+  `).join('');
+
+  const archiveHtml = createHtml('Archive', archiveBody, false);
+  await fs.writeFile(path.join(OUTPUT_DIR, 'archive.html'), archiveHtml, 'utf8');
+
+  console.log('✅ Blog generation complete! Files and metadata updated.');
 }
 
 main().catch(console.error);
