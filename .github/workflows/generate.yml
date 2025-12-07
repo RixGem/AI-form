@@ -8,7 +8,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: write  # 允许这个 workflow 修改当前仓库代码
+  contents: write
 
 jobs:
   generate-and-publish:
@@ -18,8 +18,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # 使用 GitHub 自动注入的 GITHUB_TOKEN，具备 contents:write
           token: ${{ secrets.GITHUB_TOKEN }}
+          # 重要：拉取完整历史，避免 checkout 时只有浅层 clone
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -41,15 +42,42 @@ jobs:
         run: |
           node generate-blog.mjs
 
-      - name: Show git status (debug)
+      - name: Show git status
         run: |
           git status
-          git diff --stat || true
+          git log --oneline -5
 
       - name: Commit changes if any
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
           git add .
           if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: weekly AI blog update"
+          fi
+    
+      - name: Debug git state
+        run: |
+          echo "=== Local HEAD ==="
+          git log -1 --pretty=format:"%H %s"
+          
+          echo -e "\n=== Remote HEAD ==="
+          git log -1 origin/main --pretty=format:"%H %s"
+          
+          echo -e "\n=== Git remote ==="
+          git remote -v
+          
+          echo -e "\n=== Staged changes ==="
+          git diff --cached --stat
+
+      - name: Force push to main (with safety check)
+        run: |
+          # fetch 最新的 origin/main，确保看到最新状态
+          git fetch origin main
+          
+          # --force-with-lease 是安全的强制推送：
+          # - 如果自从我们 fetch 之后，远程有人改了，就不会覆盖
+          # - 但如果只是"我们本地没跟上远程"，就允许推送并覆盖
+          git push --force-with-lease origin HEAD:main
