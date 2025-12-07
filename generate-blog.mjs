@@ -4,14 +4,15 @@ import { fileURLToPath } from 'url';
 
 // Configuration
 const API_KEY = process.env.GOOGLE_API_KEY;
-const MODEL = process.env.GOOGLE_MODEL || 'gemini-1.5-pro';
-const OUTPUT_DIR = '.';          // 生成到仓库根目录
-const POST_COUNT = 5;            // 每次新生成多少篇
-const MAX_POSTS = 40;            // posts.json 中最多保留多少篇历史
-const INDEX_DISPLAY = 5;         // 首页展示多少篇
-const META_FILE = 'posts.json';  // 元数据文件名
+// 优先使用环境变量，否则默认使用你指定的 2.5-flash-lite
+const MODEL = process.env.GOOGLE_MODEL || 'gemini-2.5-flash-lite'; 
+const OUTPUT_DIR = '.';
+const POST_COUNT = 5;
+const MAX_POSTS = 40;
+const INDEX_DISPLAY = 5;
+const META_FILE = 'posts.json';
 
-// Topics for generation（可以看作“写作主题”，不要求和最终标题一致）
+// Topics (保持不变，省略以节省空间...)
 const TOPICS = [
   "Essential Linux Server Maintenance tips for small VPS setups in 2025",
   "Practical Python productivity tricks for everyday scripting and automation",
@@ -39,141 +40,29 @@ const TOPICS = [
   "Designing a minimalist developer workspace that still boosts focus"
 ];
 
-// CSS Styles (Glassmorphism & Responsive)
+// CSS Styles (保持不变，省略以节省空间...)
 const STYLES = `
-:root {
-  --bg-color: #0f172a;
-  --text-color: #e2e8f0;
-  --card-bg: rgba(30, 41, 59, 0.7);
-  --card-border: rgba(255, 255, 255, 0.1);
-  --accent-color: #38bdf8;
-  --gradient-start: #3b82f6;
-  --gradient-end: #8b5cf6;
-}
-
-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: var(--bg-color);
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
-  background-attachment: fixed;
-  color: var(--text-color);
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-}
-
-header {
-  text-align: center;
-  margin-bottom: 4rem;
-  padding: 2rem 0;
-}
-
-h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.subtitle {
-  color: #94a3b8;
-  font-size: 1.1rem;
-}
-
-.card {
-  background: var(--card-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--card-border);
-  border-radius: 1rem;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-}
-
-.card h2 {
-  margin-top: 0;
-  color: #f8fafc;
-}
-
-.card h2 a {
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.2s;
-}
-
-.card h2 a:hover {
-  color: var(--accent-color);
-}
-
-.meta {
-  font-size: 0.875rem;
-  color: #94a3b8;
-  margin-bottom: 1rem;
-  display: flex;
-  gap: 1rem;
-}
-
-.content {
-  color: #cbd5e1;
-}
-
-.content h3 {
-  color: #f1f5f9;
-  margin-top: 1.5rem;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-  color: white;
-  text-decoration: none;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  font-size: 0.875rem;
-  transition: opacity 0.2s;
-}
-
-.btn:hover {
-  opacity: 0.9;
-}
-
-.nav-link {
-  color: var(--accent-color);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.nav-link:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 600px) {
-  h1 { font-size: 2rem; }
-  .card { padding: 1.5rem; }
-}
+:root { --bg-color: #0f172a; --text-color: #e2e8f0; --card-bg: rgba(30, 41, 59, 0.7); --card-border: rgba(255, 255, 255, 0.1); --accent-color: #38bdf8; --gradient-start: #3b82f6; --gradient-end: #8b5cf6; }
+body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background-color: var(--bg-color); background-image: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%); background-attachment: fixed; color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+header { text-align: center; margin-bottom: 4rem; padding: 2rem 0; }
+h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(to right, var(--gradient-start), var(--gradient-end)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.subtitle { color: #94a3b8; font-size: 1.1rem; }
+.card { background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--card-border); border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; transition: transform 0.2s, box-shadow 0.2s; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5); }
+.card h2 { margin-top: 0; color: #f8fafc; }
+.card h2 a { text-decoration: none; color: inherit; transition: color 0.2s; }
+.card h2 a:hover { color: var(--accent-color); }
+.meta { font-size: 0.875rem; color: #94a3b8; margin-bottom: 1rem; display: flex; gap: 1rem; }
+.content { color: #cbd5e1; }
+.content h3 { color: #f1f5f9; margin-top: 1.5rem; }
+.btn { display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: linear-gradient(to right, var(--gradient-start), var(--gradient-end)); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 500; font-size: 0.875rem; transition: opacity 0.2s; }
+.btn:hover { opacity: 0.9; }
+.nav-link { color: var(--accent-color); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+.nav-link:hover { text-decoration: underline; }
+@media (max-width: 600px) { h1 { font-size: 2rem; } .card { padding: 1.5rem; } }
 `;
 
-// 读取已有的 posts.json（如果不存在就返回空数组）
 async function loadExistingPosts() {
   try {
     const json = await fs.readFile(path.join(OUTPUT_DIR, META_FILE), 'utf8');
@@ -184,7 +73,6 @@ async function loadExistingPosts() {
   }
 }
 
-// 保存新的 posts.json
 async function savePosts(posts) {
   await fs.writeFile(
     path.join(OUTPUT_DIR, META_FILE),
@@ -193,11 +81,9 @@ async function savePosts(posts) {
   );
 }
 
-// Helper: Generate content using Gemini API
+// --- 核心优化 1: 更健壮的生成函数，开启 JSON 模式 ---
 async function generateContent(prompt) {
-  if (!API_KEY) {
-    throw new Error('GOOGLE_API_KEY environment variable is not set.');
-  }
+  if (!API_KEY) throw new Error('GOOGLE_API_KEY is not set.');
 
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`;
 
@@ -205,20 +91,43 @@ async function generateContent(prompt) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }]
+      contents: [{ parts: [{ text: prompt }] }],
+      // [关键点] 强制模型输出 JSON，极大降低 Lite 模型出错率
+      generationConfig: {
+        responseMimeType: "application/json" 
+      }
     })
   });
 
   if (!response.ok) {
     const err = await response.text();
-    throw new Error(`Gemini API Error: ${response.status} ${response.statusText}\n${err}`);
+    throw new Error(`API Error ${response.status}: ${err}`);
   }
 
   const data = await response.json();
-  return data.candidates[0].content.parts[0].text;
+  return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
 }
 
-// Helper: Create HTML page
+// --- 核心优化 2: 增加重试机制 ---
+async function generateWithRetry(prompt, retries = 3) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      let rawText = await generateContent(prompt);
+      
+      // [关键点] 即使开启了 JSON 模式，仍用正则做一道清洗，防止模型偶尔吐出前缀
+      const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+      if (!jsonMatch) throw new Error("No JSON object found in response");
+      
+      return JSON.parse(jsonMatch[0]);
+    } catch (e) {
+      console.warn(`⚠️ Attempt ${i + 1} failed: ${e.message}. Retrying...`);
+      if (i === retries - 1) throw e; // 最后一次尝试如果还失败，则抛出异常
+      // 等待 1 秒再重试，避免触发速率限制
+      await new Promise(r => setTimeout(r, 1000));
+    }
+  }
+}
+
 function createHtml(title, bodyContent, isIndex = false) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -245,54 +154,46 @@ function createHtml(title, bodyContent, isIndex = false) {
 }
 
 async function main() {
-  console.log('🚀 Starting Blog Generation...');
-
+  console.log(`🚀 Starting Blog Generation using [${MODEL}]...`);
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
 
-  // 1. 读取历史元数据
   let posts = await loadExistingPosts();
-
   const selectedTopics = TOPICS.sort(() => 0.5 - Math.random()).slice(0, POST_COUNT);
 
   for (let i = 0; i < selectedTopics.length; i++) {
     const topic = selectedTopics[i];
-    console.log(`[${i + 1}/${POST_COUNT}] Generating post for: "${topic}"...`);
+    console.log(`[${i + 1}/${POST_COUNT}] Generating: "${topic}"...`);
 
+    // --- 核心优化 3: 提示词优化 ---
+    // 移除了关于 Markdown 的负面提示，因为 generationConfig 已经接管了格式控制
+    // 增加了对 HTML 标签的明确要求，防止 Lite 模型偷懒
     const prompt = `
-You are an experienced technical blogger.
-
-Write a clear, engaging blog post about the following topic:
-"${topic}"
-
-Return ONLY a JSON object with the following structure (no markdown code fences or extra text):
-{
-  "title": "Engaging, human-like blog post title, based on the topic but not identical to it",
-  "summary": "A 2-sentence summary for the preview card.",
-  "content": "HTML formatted body content (use <h3>, <p>, <ul>, <li>, <code>). Do not include <h1> or <html> tags."
-}
-`;
+    You are an expert technical writer using the ${MODEL} model.
+    
+    Task: Write a technical blog post about "${topic}".
+    
+    Output Requirement:
+    Return a single valid JSON object. 
+    The "content" field MUST contain valid semantic HTML string (e.g., <h3>, <p>, <ul>, <li>, <code>).
+    Escape any double quotes inside the content properly.
+    
+    JSON Structure:
+    {
+      "title": "A catchy, click-worthy title for this topic",
+      "summary": "A short 2-sentence summary suitable for a preview card",
+      "content": "HTML content here. Do NOT include <html>, <head>, or <body> tags. Start directly with the article body."
+    }
+    `;
 
     try {
-      let rawText = await generateContent(prompt);
+      // 使用带重试的生成函数
+      const postData = await generateWithRetry(prompt);
 
-      // 清理可能出现的 `````` 包裹
-      rawText = rawText
-        .replace(/```/g, '')
-        .replace(/```/g, '')
-        .trim();
-
-      const postData = JSON.parse(rawText);
-
-      // 用时间戳避免与历史文件重名
       const ts = Date.now();
       const fileName = `post-${ts}-${i + 1}.html`;
-
       const date = new Date();
-      const dateStr = date.toLocaleDateString('en-US', {
-        year: 'numeric', month: 'long', day: 'numeric'
-      });
+      const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-      // 生成单篇文章 HTML
       const postHtml = createHtml(
         postData.title,
         `<article class="card">
@@ -306,7 +207,6 @@ Return ONLY a JSON object with the following structure (no markdown code fences 
 
       await fs.writeFile(path.join(OUTPUT_DIR, fileName), postHtml, 'utf8');
 
-      // 新文章插到列表最前面
       posts.unshift({
         title: postData.title,
         summary: postData.summary,
@@ -316,21 +216,17 @@ Return ONLY a JSON object with the following structure (no markdown code fences 
       });
 
     } catch (error) {
-      console.error(`❌ Failed to generate post for "${topic}":`, error.message);
+      // 就算失败也不要中断整个流程，只是跳过这一篇
+      console.error(`❌ Skipped "${topic}":`, error.message);
     }
   }
 
-  // 2. 截断历史，只保留最近 MAX_POSTS 篇
   posts.sort((a, b) => new Date(b.dateISO) - new Date(a.dateISO));
   posts = posts.slice(0, MAX_POSTS);
-
-  // 3. 写回 posts.json
   await savePosts(posts);
 
-  // 4. 生成首页（只展示最近 INDEX_DISPLAY 篇）
   console.log('Creating index page...');
   const latest = posts.slice(0, INDEX_DISPLAY);
-
   const indexBody = latest.map(post => `
     <article class="card">
       <h2><a href="${post.fileName}">${post.title}</a></h2>
@@ -342,16 +238,11 @@ Return ONLY a JSON object with the following structure (no markdown code fences 
 
   const indexHtml = createHtml(
     'Home',
-    indexBody + `
-      <div style="text-align:center; margin-top:2rem;">
-        <a href="archive.html" class="nav-link">View full archive →</a>
-      </div>
-    `,
+    indexBody + `<div style="text-align:center; margin-top:2rem;"><a href="archive.html" class="nav-link">View full archive →</a></div>`,
     true
   );
   await fs.writeFile(path.join(OUTPUT_DIR, 'index.html'), indexHtml, 'utf8');
 
-  // 5. 生成归档页（展示所有保留的历史）
   console.log('Creating archive page...');
   const archiveBody = posts.map(post => `
     <article class="card">
@@ -361,11 +252,10 @@ Return ONLY a JSON object with the following structure (no markdown code fences 
       <a href="${post.fileName}" class="btn">Read Article</a>
     </article>
   `).join('');
-
   const archiveHtml = createHtml('Archive', archiveBody, false);
   await fs.writeFile(path.join(OUTPUT_DIR, 'archive.html'), archiveHtml, 'utf8');
 
-  console.log('✅ Blog generation complete! Files and metadata updated.');
+  console.log('✅ Blog generation complete!');
 }
 
 main().catch(console.error);
