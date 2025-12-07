@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level Up Your Ops: Prometheus & Grafana for Robust Infrastructure Monitoring - Tech Insights</title>
+  <style>
+:root { --bg-color: #0f172a; --text-color: #e2e8f0; --card-bg: rgba(30, 41, 59, 0.7); --card-border: rgba(255, 255, 255, 0.1); --accent-color: #38bdf8; --gradient-start: #3b82f6; --gradient-end: #8b5cf6; }
+body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background-color: var(--bg-color); background-image: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%); background-attachment: fixed; color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+header { text-align: center; margin-bottom: 4rem; padding: 2rem 0; }
+h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(to right, var(--gradient-start), var(--gradient-end)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.subtitle { color: #94a3b8; font-size: 1.1rem; }
+.card { background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--card-border); border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; transition: transform 0.2s, box-shadow 0.2s; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5); }
+.card h2 { margin-top: 0; color: #f8fafc; }
+.card h2 a { text-decoration: none; color: inherit; transition: color 0.2s; }
+.card h2 a:hover { color: var(--accent-color); }
+.meta { font-size: 0.875rem; color: #94a3b8; margin-bottom: 1rem; display: flex; gap: 1rem; }
+.content { color: #cbd5e1; }
+.content h3 { color: #f1f5f9; margin-top: 1.5rem; }
+.btn { display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: linear-gradient(to right, var(--gradient-start), var(--gradient-end)); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 500; font-size: 0.875rem; transition: opacity 0.2s; }
+.btn:hover { opacity: 0.9; }
+.nav-link { color: var(--accent-color); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+.nav-link:hover { text-decoration: underline; }
+/* 新增图片样式，确保图片看起来像模像样地占位 */
+.featured-img { width: 100%; height: 250px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 1.5rem; background-color: #1e293b; }
+@media (max-width: 600px) { h1 { font-size: 2rem; } .card { padding: 1.5rem; } }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Tech Insights</h1>
+      <p class="subtitle">Exploring the frontier of modern development</p>
+      <div style="margin-top:1rem"><a href="index.html" class="nav-link">← Back to Home</a></div>
+    </header>
+    <article class="card">
+          <img src="https://picsum.photos/800/400?random=1765096618985" alt="Generic placeholder" class="featured-img" loading="lazy">
+          <h2>Level Up Your Ops: Prometheus & Grafana for Robust Infrastructure Monitoring</h2>
+          <div class="meta">Published on December 7, 2025 • #Tech</div>
+          <div class="content">
+            <h3>Why Monitor Your Infrastructure?</h3>
+<p>In today's fast-paced digital world, maintaining a stable and performant infrastructure is paramount. Downtime costs money and erodes user trust. Effective monitoring isn't just about detecting problems; it's about proactively identifying potential issues before they impact your users, optimizing resource utilization, and understanding your system's behavior.</p>
+
+<h3>Introducing Prometheus and Grafana</h3>
+<p>Prometheus is an open-source systems monitoring and alerting toolkit, originally built at SoundCloud. It's designed for reliability and scalability, featuring a powerful multi-dimensional data model and a flexible query language called PromQL. Grafana is an open-source analytics and interactive visualization web application. It allows you to query, visualize, alert on, and understand your metrics no matter where they are stored.</p>
+
+<h3>Setting Up Prometheus</h3>
+<p>The core of Prometheus is the <strong>Prometheus server</strong>. It scrapes metrics from configured targets at given intervals, evaluates rule expressions, and triggers alerts if necessary. It stores all collected data in a time-series database.</p>
+
+<h4>Installation</h4>
+<p>The simplest way to get started is by downloading the pre-compiled binaries from the <a href="https://prometheus.io/download/" target="_blank">official Prometheus website</a>. Once downloaded, you'll need a configuration file (<code>prometheus.yml</code>) to tell Prometheus where to find your targets.</p>
+
+<h4>Configuration (<code>prometheus.yml</code> example)</h4>
+<pre><code>global:
+  scrape_interval: 15s # How often to scrape targets
+
+scrape_configs:
+  - job_name: 'prometheus' # Name of the job
+    static_configs:
+      - targets: ['localhost:9090'] # Prometheus's own metrics
+
+  - job_name: 'node_exporter' # For host metrics
+    static_configs:
+      - targets: ['your_server_ip:9100'] # Replace with your server IP
+</code></pre>
+<p>You'll need to run <strong>Node Exporter</strong> on your hosts to expose host-level metrics like CPU, memory, and disk usage. You can find installation instructions on the <a href="https://prometheus.io/docs/guides/node-exporter/" target="_blank">Prometheus documentation</a>.</p>
+
+<h3>Setting Up Grafana</h3>
+<p>Grafana makes visualizing your Prometheus data intuitive and powerful. It supports a wide range of data sources, including Prometheus.</p>
+
+<h4>Installation</h4>
+<p>Grafana is also available as pre-compiled binaries, Docker images, or can be installed via package managers like <code>apt</code> or <code>yum</code>. Visit the <a href="https://grafana.com/get/" target="_blank">Grafana website</a> for detailed installation instructions.</p>
+
+<h4>Connecting Grafana to Prometheus</h4>
+<ol>
+  <li>Once Grafana is running, log in to the web interface (default port is 3000).</li>
+  <li>Navigate to <strong>Configuration -> Data Sources</strong>.</li>
+  <li>Click <strong>Add data source</strong>.</li>
+  <li>Select <strong>Prometheus</strong> from the list.</li>
+  <li>Enter the URL of your Prometheus server (e.g., <code>http://localhost:9090</code>).</li>
+  <li>Click <strong>Save & Test</strong> to ensure the connection is successful.</li>
+</ol>
+
+<h3>Creating Dashboards</h3>
+<p>With your data source configured, you can start building dashboards. Grafana offers a rich library of pre-built dashboards that you can import, or you can create your own from scratch.</p>
+
+<ul>
+  <li>Click the <strong>+</strong> icon in the left sidebar and select <strong>Dashboard</strong>.</li>
+  <li>Click <strong>Add new panel</strong>.</li>
+  <li>Choose your Prometheus data source.</li>
+  <li>Write PromQL queries to fetch the metrics you want to visualize (e.g., <code>node_cpu_seconds_total</code> for CPU usage, <code>node_memory_bytes_total</code> for memory).</li>
+  <li>Select the visualization type (Graph, Stat, Gauge, etc.).</li>
+  <li>Save your panel and your dashboard.</li>
+</ul>
+
+<h3>Alerting</h3>
+<p>Both Prometheus and Grafana support alerting. Prometheus can define alerting rules in its configuration, which then fire alerts to an Alertmanager. Grafana can also be configured to send alerts based on dashboard panel queries.</p>
+
+<h3>Conclusion</h3>
+<p>Setting up Prometheus and Grafana provides a robust, flexible, and powerful solution for monitoring your infrastructure. By combining Prometheus's efficient data collection and querying with Grafana's intuitive visualization, you gain deep insights into your system's performance and health, enabling you to maintain reliability and optimize operations.</p>
+          </div>
+        </article>
+    <footer style="text-align:center; color:#64748b; margin-top:4rem; padding-bottom:2rem;">
+      &copy; 2025 Tech Insights Blog. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>

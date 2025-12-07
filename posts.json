@@ -1,5 +1,45 @@
 [
   {
+    "title": "Grid vs. Flexbox in 2025: Mastering Modern CSS Layout",
+    "summary": "Navigate the world of modern CSS layouts with confidence. This post breaks down when to use Grid and when to reach for Flexbox in 2025.",
+    "fileName": "post-1765096631375-5.html",
+    "dateISO": "2025-12-07T08:37:11.375Z",
+    "dateStr": "December 7, 2025",
+    "imageUrl": "https://picsum.photos/800/400?random=1765096631379"
+  },
+  {
+    "title": "Level Up Your Ops: Prometheus & Grafana for Robust Infrastructure Monitoring",
+    "summary": "Unlock the power of real-time insights into your system's health and performance. This guide walks you through setting up Prometheus and Grafana for effective infrastructure monitoring.",
+    "fileName": "post-1765096618982-4.html",
+    "dateISO": "2025-12-07T08:36:58.982Z",
+    "dateStr": "December 7, 2025",
+    "imageUrl": "https://picsum.photos/800/400?random=1765096618985"
+  },
+  {
+    "title": "Declutter Your Code: The Minimalist Developer Workspace for Peak Focus",
+    "summary": "Discover how a minimalist approach to your developer workspace can significantly boost productivity and focus. Learn practical tips to create an environment that champions concentration.",
+    "fileName": "post-1765096609585-3.html",
+    "dateISO": "2025-12-07T08:36:49.585Z",
+    "dateStr": "December 7, 2025",
+    "imageUrl": "https://picsum.photos/800/400?random=1765096609587"
+  },
+  {
+    "title": "Boost Your Core Web Vitals: LCP & CLS Optimizations for Blazing-Fast Frontends",
+    "summary": "Discover modern frontend techniques to dramatically improve Largest Contentful Paint (LCP) and Cumulative Layout Shift (CLS). Make your website faster and more user-friendly with these actionable insights.",
+    "fileName": "post-1765096605702-2.html",
+    "dateISO": "2025-12-07T08:36:45.702Z",
+    "dateStr": "December 7, 2025",
+    "imageUrl": "https://picsum.photos/800/400?random=1765096605703"
+  },
+  {
+    "title": "Mastering Git: Workflows for Lone Wolves and Tiny Teams",
+    "summary": "Streamline your solo or small team development with efficient Git workflows. Discover strategies that boost productivity and code quality.",
+    "fileName": "post-1765096601094-1.html",
+    "dateISO": "2025-12-07T08:36:41.094Z",
+    "dateStr": "December 7, 2025",
+    "imageUrl": "https://picsum.photos/800/400?random=1765096601094"
+  },
+  {
     "title": "Vim vs. Emacs: A Pragmatic Showdown from a Veteran Developer's Keyboard",
     "summary": "After decades navigating the text editor landscape, a seasoned developer offers a neutral take on the eternal Vim vs. Emacs debate. Discover which might truly suit your workflow.",
     "fileName": "post-1765095121994-5.html",

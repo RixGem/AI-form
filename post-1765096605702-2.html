@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boost Your Core Web Vitals: LCP & CLS Optimizations for Blazing-Fast Frontends - Tech Insights</title>
+  <style>
+:root { --bg-color: #0f172a; --text-color: #e2e8f0; --card-bg: rgba(30, 41, 59, 0.7); --card-border: rgba(255, 255, 255, 0.1); --accent-color: #38bdf8; --gradient-start: #3b82f6; --gradient-end: #8b5cf6; }
+body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background-color: var(--bg-color); background-image: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%); background-attachment: fixed; color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+header { text-align: center; margin-bottom: 4rem; padding: 2rem 0; }
+h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(to right, var(--gradient-start), var(--gradient-end)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.subtitle { color: #94a3b8; font-size: 1.1rem; }
+.card { background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--card-border); border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; transition: transform 0.2s, box-shadow 0.2s; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5); }
+.card h2 { margin-top: 0; color: #f8fafc; }
+.card h2 a { text-decoration: none; color: inherit; transition: color 0.2s; }
+.card h2 a:hover { color: var(--accent-color); }
+.meta { font-size: 0.875rem; color: #94a3b8; margin-bottom: 1rem; display: flex; gap: 1rem; }
+.content { color: #cbd5e1; }
+.content h3 { color: #f1f5f9; margin-top: 1.5rem; }
+.btn { display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: linear-gradient(to right, var(--gradient-start), var(--gradient-end)); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 500; font-size: 0.875rem; transition: opacity 0.2s; }
+.btn:hover { opacity: 0.9; }
+.nav-link { color: var(--accent-color); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+.nav-link:hover { text-decoration: underline; }
+/* 新增图片样式，确保图片看起来像模像样地占位 */
+.featured-img { width: 100%; height: 250px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 1.5rem; background-color: #1e293b; }
+@media (max-width: 600px) { h1 { font-size: 2rem; } .card { padding: 1.5rem; } }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Tech Insights</h1>
+      <p class="subtitle">Exploring the frontier of modern development</p>
+      <div style="margin-top:1rem"><a href="index.html" class="nav-link">← Back to Home</a></div>
+    </header>
+    <article class="card">
+          <img src="https://picsum.photos/800/400?random=1765096605703" alt="Generic placeholder" class="featured-img" loading="lazy">
+          <h2>Boost Your Core Web Vitals: LCP & CLS Optimizations for Blazing-Fast Frontends</h2>
+          <div class="meta">Published on December 7, 2025 • #Tech</div>
+          <div class="content">
+            <h3>Understanding LCP and CLS</h3>
+<p>Core Web Vitals are crucial metrics that Google uses to assess user experience. Two of the most impactful are Largest Contentful Paint (LCP), measuring loading performance, and Cumulative Layout Shift (CLS), measuring visual stability.</p>
+<p>High LCP means users wait too long to see the main content, while high CLS leads to frustrating layout jumps as the page loads. Fortunately, modern frontend development offers powerful strategies to combat these issues.</p>
+
+<h3>Optimizing Largest Contentful Paint (LCP)</h3>
+<h4>1. Efficient Image Loading</h4>
+<ul>
+  <li><strong>Lazy Loading:</strong> Defer loading of images that are below the fold using the <code>loading="lazy"</code> attribute. This significantly reduces initial page load time.</li>
+  <li><strong>Responsive Images:</strong> Use <code>&lt;picture&gt;</code> element or <code>srcset</code> attribute to serve appropriately sized images based on the user's viewport and device resolution.</li>
+  <li><strong>Modern Image Formats:</strong> Employ formats like WebP or AVIF, which offer better compression and quality compared to JPEG or PNG.</li>
+</ul>
+
+<h4>2. Server-Side Rendering (SSR) or Static Site Generation (SSG)</h4>
+<p>Instead of relying solely on client-side JavaScript to render content, SSR and SSG deliver fully rendered HTML from the server. This allows the browser to display content much faster, directly impacting LCP.</p>
+
+<h4>3. Critical CSS</h4>
+<p>Extract and inline the CSS required to render the above-the-fold content directly in the <code>&lt;head&gt;</code> of your HTML. This ensures critical elements are styled immediately, improving perceived performance.</p>
+
+<h4>4. Resource Prioritization</h4>
+<p>Use <code>&lt;link rel="preload"&gt;</code> to fetch critical resources like fonts or key JavaScript files early in the loading process. Be judicious to avoid overwhelming the browser.</p>
+
+<h3>Minimizing Cumulative Layout Shift (CLS)</h3>
+<h4>1. Specify Dimensions for Media and Ads</h4>
+<p>Always provide explicit <code>width</code> and <code>height</code> attributes for images, videos, and iframes. For ads, reserve space using CSS to prevent content from shifting when ads load.</p>
+<p>Example:</p>
+<code>&lt;img src="image.jpg" alt="Description" width="600" height="400"&gt;</code>
+
+<h4>2. Avoid Inserting Content Dynamically Above Existing Content</h4>
+<p>When content is inserted dynamically (e.g., ads, banners, or user-generated content), ensure it doesn't push existing content down the page unexpectedly. If necessary, pre-allocate space.</p>
+
+<h4>3. Font Loading Strategies</h4>
+<p>Use the <code>font-display: swap;</code> CSS property. This tells the browser to use a fallback font while the custom font is loading, preventing invisible text (FOIT) and subsequent layout shifts.</p>
+<p>Example:</p>
+<code>@font-face { font-family: 'MyFont'; src: url('myfont.woff2') format('woff2'); font-display: swap; }</code>
+
+<h4>4. Animations</h4>
+<p>Prefer CSS animations that utilize the <code>transform</code> and <code>opacity</code> properties. These are often hardware-accelerated and less likely to trigger layout shifts compared to animating properties like <code>margin</code> or <code>top</code>.</p>
+
+<h3>Conclusion</h3>
+<p>Implementing these modern frontend performance optimizations for LCP and CLS will not only improve your Core Web Vitals scores but also lead to a significantly better user experience, reduced bounce rates, and increased conversions. Start by auditing your current performance and prioritizing the strategies that will yield the greatest impact for your specific application.</p>
+          </div>
+        </article>
+    <footer style="text-align:center; color:#64748b; margin-top:4rem; padding-bottom:2rem;">
+      &copy; 2025 Tech Insights Blog. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>

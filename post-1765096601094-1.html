@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mastering Git: Workflows for Lone Wolves and Tiny Teams - Tech Insights</title>
+  <style>
+:root { --bg-color: #0f172a; --text-color: #e2e8f0; --card-bg: rgba(30, 41, 59, 0.7); --card-border: rgba(255, 255, 255, 0.1); --accent-color: #38bdf8; --gradient-start: #3b82f6; --gradient-end: #8b5cf6; }
+body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background-color: var(--bg-color); background-image: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%); background-attachment: fixed; color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+header { text-align: center; margin-bottom: 4rem; padding: 2rem 0; }
+h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(to right, var(--gradient-start), var(--gradient-end)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.subtitle { color: #94a3b8; font-size: 1.1rem; }
+.card { background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--card-border); border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; transition: transform 0.2s, box-shadow 0.2s; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5); }
+.card h2 { margin-top: 0; color: #f8fafc; }
+.card h2 a { text-decoration: none; color: inherit; transition: color 0.2s; }
+.card h2 a:hover { color: var(--accent-color); }
+.meta { font-size: 0.875rem; color: #94a3b8; margin-bottom: 1rem; display: flex; gap: 1rem; }
+.content { color: #cbd5e1; }
+.content h3 { color: #f1f5f9; margin-top: 1.5rem; }
+.btn { display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: linear-gradient(to right, var(--gradient-start), var(--gradient-end)); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 500; font-size: 0.875rem; transition: opacity 0.2s; }
+.btn:hover { opacity: 0.9; }
+.nav-link { color: var(--accent-color); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+.nav-link:hover { text-decoration: underline; }
+/* 新增图片样式，确保图片看起来像模像样地占位 */
+.featured-img { width: 100%; height: 250px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 1.5rem; background-color: #1e293b; }
+@media (max-width: 600px) { h1 { font-size: 2rem; } .card { padding: 1.5rem; } }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Tech Insights</h1>
+      <p class="subtitle">Exploring the frontier of modern development</p>
+      <div style="margin-top:1rem"><a href="index.html" class="nav-link">← Back to Home</a></div>
+    </header>
+    <article class="card">
+          <img src="https://picsum.photos/800/400?random=1765096601094" alt="Generic placeholder" class="featured-img" loading="lazy">
+          <h2>Mastering Git: Workflows for Lone Wolves and Tiny Teams</h2>
+          <div class="meta">Published on December 7, 2025 • #Tech</div>
+          <div class="content">
+            <h3>Navigating Git as a Solo Developer or Small Team</h3>
+<p>When you're coding solo or with a handful of collaborators, Git workflows can feel like overkill. However, adopting a structured approach, even a simple one, can prevent chaos and ensure a smoother development process. Let's explore some effective Git workflows tailored for these scenarios.</p>
+
+<h3>1. The Simple Branching Workflow</h3>
+<p>This is perhaps the most straightforward workflow and works wonders for individuals or pairs working on a single project. The core idea is to use <code>main</code> (or <code>master</code>) as your stable, production-ready branch.</p>
+<ul>
+  <li><strong><code>main</code> Branch:</strong> Represents the current stable version of your code. Nothing experimental goes here.</li>
+  <li><strong>Feature Branches:</strong> For every new feature, bug fix, or experiment, create a new branch off <code>main</code>. Name it descriptively, like <code>feature/user-profile</code> or <code>fix/login-bug</code>.</li>
+  <li><strong>Committing:</strong> Make small, frequent commits on your feature branches. Write clear commit messages!</li>
+  <li><strong>Merging:</strong> Once your feature is complete and tested, merge it back into <code>main</code>. For small teams, a simple <code>git merge feature-branch</code> is often sufficient. For solo developers, this is simply merging your own work back into the main line.</li>
+  <li><strong>Pull Requests (Optional but Recommended):</strong> Even for solo developers, using pull requests (PRs) on platforms like GitHub, GitLab, or Bitbucket can be beneficial. It forces you to review your own code before merging, acting as a self-code review. For tiny teams, PRs are essential for collaboration and review.</li>
+</ul>
+
+<h3>2. Gitflow (Simplified)</h3>
+<p>While the full Gitflow branching model can be complex, a simplified version can be very effective for small teams that need more structure, especially when managing releases. The key branches are:</p>
+<ul>
+  <li><strong><code>main</code>:</strong> Production-ready code.</li>
+  <li><strong><code>develop</code>:</strong> The integration branch where features are merged before release. This is where most of your day-to-day work happens.</li>
+  <li><strong>Feature Branches:</strong> Branched off <code>develop</code> for new features. Merged back into <code>develop</code> upon completion.</li>
+  <li><strong>Release Branches (Optional for very small teams):</strong> Branched off <code>develop</code> when preparing for a release. This branch is for final testing, bug fixes, and minor tweaks before merging into <code>main</code> and tagging a release.</li>
+</ul>
+<p><strong>Workflow:</strong></p>
+<ol>
+  <li>Start new features from <code>develop</code>.</li>
+  <li>Commit and push your work to your feature branch.</li>
+  <li>When ready, create a PR to merge the feature branch into <code>develop</code>.</li>
+  <li>Once enough features are in <code>develop</code>, create a release branch (if using).</li>
+  <li>Fix bugs on the release branch, merge back to <code>develop</code>, and then merge the release branch to <code>main</code>, tagging it.</li>
+</ol>
+<p>For solo developers, this might be overkill, but for teams of 2-3, it provides a clear separation between ongoing development and stable production code.</p>
+
+<h3>Best Practices for Any Workflow</h3>
+<ul>
+  <li><strong>Commit Often, Push Regularly:</strong> Don't wait too long to commit. Frequent commits make it easier to track down bugs and revert changes. Push your branches to a remote repository regularly to back up your work and make it accessible to others.</li>
+  <li><strong>Descriptive Commit Messages:</strong> Write messages that explain *what* changed and *why*. Start with a concise subject line and add more detail in the body if needed.</li>
+  <li><strong>Use <code>.gitignore</code>:</strong> Prevent unwanted files (like compiled code, dependencies, or IDE configurations) from being tracked by Git.</li>
+  <li><strong>Pull Before Pushing:</strong> If working in a team, always pull the latest changes from the remote repository before pushing your own to avoid conflicts.</li>
+  <li><strong>Keep Branches Short-Lived:</strong> Aim to merge feature branches back into your main development line as quickly as possible to minimize the chance of large, complex merge conflicts.</li>
+</ul>
+
+<h3>Choosing the Right Workflow</h3>
+<p>For most solo developers, the <strong>Simple Branching Workflow</strong> is more than sufficient. If you're a small team of 2-4 developers who need a bit more structure, especially around releases, a <strong>Simplified Gitflow</strong> can offer a good balance of control and simplicity.</p>
+<p>The key is consistency. Whichever workflow you choose, stick to it. This predictability will save you time, reduce frustration, and lead to cleaner, more maintainable code.</p>
+          </div>
+        </article>
+    <footer style="text-align:center; color:#64748b; margin-top:4rem; padding-bottom:2rem;">
+      &copy; 2025 Tech Insights Blog. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>
