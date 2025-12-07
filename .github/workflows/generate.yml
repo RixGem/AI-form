@@ -7,6 +7,9 @@ on:
   # 手动在 Actions 页面触发，方便调试
   workflow_dispatch: {}
 
+permissions:
+  contents: write 
+  
 jobs:
   generate-and-publish:
     runs-on: ubuntu-latest
