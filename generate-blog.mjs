@@ -11,16 +11,32 @@ const MAX_POSTS = 40;            // posts.json 中最多保留多少篇历史
 const INDEX_DISPLAY = 5;         // 首页展示多少篇
 const META_FILE = 'posts.json';  // 元数据文件名
 
-// Topics for generation
+// Topics for generation（可以看作“写作主题”，不要求和最终标题一致）
 const TOPICS = [
-  "Essential Linux Server Maintenance Tips for 2025",
-  "Python Productivity Hacks You Might Have Missed",
-  "Modern Frontend Performance Optimization Techniques",
-  "The Art of Coffee Brewing for Developers",
-  "Understanding WebSocket Protocol Deep Dive",
-  "Securing Your Cloudflare Worker Deployments",
-  "Vim vs Emacs: A Neutral Perspective",
-  "Introduction to eBPF for System Administrators"
+  "Essential Linux Server Maintenance tips for small VPS setups in 2025",
+  "Practical Python productivity tricks for everyday scripting and automation",
+  "Modern frontend performance optimizations that significantly improve LCP and CLS",
+  "How developers can build a simple but consistent coffee brewing ritual around work",
+  "A practical deep dive into how the WebSocket handshake and frames actually work",
+  "Common security pitfalls when deploying and maintaining Cloudflare Workers in production",
+  "A neutral comparison of Vim and Emacs from the perspective of a long-time developer",
+  "A beginner-friendly explanation of eBPF and realistic use cases for system administrators",
+  "Real-world techniques for optimizing Docker containers beyond basic image slimming",
+  "Designing resilient microservices using circuit breakers and fallback strategies",
+  "PostgreSQL query performance tuning tactics for production workloads",
+  "Why so many developers care about mechanical keyboards and how to choose one",
+  "Understanding Rust ownership and borrowing through concrete, practical examples",
+  "API rate limiting strategies that scale and protect your backend",
+  "Git workflows that work well for solo developers and very small teams",
+  "Setting up effective infrastructure monitoring with Prometheus and Grafana",
+  "Making sense of advanced TypeScript generics in everyday codebases",
+  "Zero-downtime database migration patterns for web applications",
+  "The science behind the Pomodoro technique and how coders can adapt it",
+  "A practical guide to debugging Kubernetes Pods and getting useful signals",
+  "How to think about modern CSS layout: Grid vs Flexbox in 2025",
+  "Building ergonomic CLI tools in Go with real-world examples",
+  "Redis caching patterns for high-traffic, low-latency applications",
+  "Designing a minimalist developer workspace that still boosts focus"
 ];
 
 // CSS Styles (Glassmorphism & Responsive)
@@ -243,18 +259,27 @@ async function main() {
     console.log(`[${i + 1}/${POST_COUNT}] Generating post for: "${topic}"...`);
 
     const prompt = `
-      Write a technical blog post about "${topic}".
-      Return ONLY a JSON object with the following structure (no markdown formatting blocks):
-      {
-        "title": "Engaging Title",
-        "summary": "A 2-sentence summary for the preview card.",
-        "content": "HTML formatted body content (use <h3>, <p>, <ul>, <li>, <code>). Do not include <h1> or <html> tags."
-      }
-    `;
+You are an experienced technical blogger.
+
+Write a clear, engaging blog post about the following topic:
+"${topic}"
+
+Return ONLY a JSON object with the following structure (no markdown code fences or extra text):
+{
+  "title": "Engaging, human-like blog post title, based on the topic but not identical to it",
+  "summary": "A 2-sentence summary for the preview card.",
+  "content": "HTML formatted body content (use <h3>, <p>, <ul>, <li>, <code>). Do not include <h1> or <html> tags."
+}
+`;
 
     try {
       let rawText = await generateContent(prompt);
-      rawText = rawText.replace(/``````/g, '').trim();
+
+      // 清理可能出现的 `````` 包裹
+      rawText = rawText
+        .replace(/```
+        .replace(/```/g, '')
+        .trim();
 
       const postData = JSON.parse(rawText);
 
