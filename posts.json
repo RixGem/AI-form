@@ -1,5 +1,40 @@
 [
   {
+    "title": "Vim vs. Emacs: The Ancient Code Wars That Still Wage in the Cybernetic Soul!",
+    "summary": "Two titans of text manipulation, locked in an eternal IDE-ological conflict. Our veteran chrome-plated coder decodes the binary battlefield.",
+    "fileName": "post-1765242060622-5.html",
+    "dateStr": "12/9/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20neutral%20comparison%20of%20Vim%20and%20Emacs%20from%20the%20perspective%20of%20a%20long-time%20developer%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1765242060622"
+  },
+  {
+    "title": "eBPF: Unlock the Matrix of Your Servers (Even if Your Brain is Wired for Dial-Up!)",
+    "summary": "Demystify eBPF for noobs and discover how it's making sysadmins the digital overlords of their silicon domains. No more black boxes, just pure, unadulterated kernel hacking for the masses!",
+    "fileName": "post-1765242044276-4.html",
+    "dateStr": "12/9/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20beginner-friendly%20explanation%20of%20eBPF%20and%20realistic%20use%20cases%20for%20system%20administrators%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1765242044276"
+  },
+  {
+    "title": "NEVER Slow Down Again! Unlock Blazing Redis Speeds for Your Cyber-Empire!",
+    "summary": "Exploit cutting-edge Redis caching paradigms to achieve sub-millisecond response times and dominate high-velocity data streams. Essential for your network's survival.",
+    "fileName": "post-1765242028484-3.html",
+    "dateStr": "12/9/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Redis%20caching%20patterns%20for%20high-traffic%2C%20low-latency%20applications%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1765242028484"
+  },
+  {
+    "title": "NEVER COMMIT AGAIN! Solo Dev Git HACKS They DON'T Want You To KNOW!",
+    "summary": "Master your code, not your VCS. Unleash ultimate solo dev efficiency with streamlined Git workflows. Stop the noise, start the build.",
+    "fileName": "post-1765242013890-2.html",
+    "dateStr": "12/9/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Git%20workflows%20that%20work%20well%20for%20solo%20developers%20and%20very%20small%20teams%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1765242013890"
+  },
+  {
+    "title": "CRACK THE CODE! Prometheus & Grafana SECRETS UNLOCKED FOR MAX CYBER-DOMINANCE!",
+    "summary": "Learn to forge your network's neural pathways and visualize its dark data streams with Prometheus and Grafana. Essential for any true digital overlord.",
+    "fileName": "post-1765241998435-1.html",
+    "dateStr": "12/9/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Setting%20up%20effective%20infrastructure%20monitoring%20with%20Prometheus%20and%20Grafana%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1765241998435"
+  },
+  {
     "title": "STOP DDoS NIGHTMARES! Unlock Infinite API Uptime with These SECRET Scaling Hacks!",
     "summary": "Don't let botnets drag your precious API into the digital abyss. Learn advanced rate limiting algorithms and defensive architectures to achieve hyper-scalability and impenetrable backend security. Your data streams will flow like liquid chrome!",
     "fileName": "post-1765155716393-5.html",
