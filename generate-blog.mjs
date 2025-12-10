@@ -7,12 +7,11 @@ import path from 'path';
 const API_KEY = process.env.GOOGLE_API_KEY;
 const MODEL = process.env.GOOGLE_MODEL || 'gemini-2.5-flash-lite';
 const OUTPUT_DIR = '.';
-const POST_COUNT = 5;       // 每次运行时生成的新文章数量
-const ARCHIVE_LIMIT = 50;   // 归档页随机展示的最大文章数
-const INDEX_DISPLAY = 5;    // 首页展示的最新文章数
+const POST_COUNT = 5;       
+const ARCHIVE_LIMIT = 50;   
+const INDEX_DISPLAY = 5;    
 const META_FILE = 'posts.json';
 
-// 写作主题池
 const TOPICS = [
   "Essential Linux Server Maintenance tips for small VPS setups in 2025",
   "Practical Python productivity tricks for everyday scripting and automation",
@@ -41,7 +40,7 @@ const TOPICS = [
 ];
 
 // ==========================================
-// 🎨 赛博朋克 CSS 样式 (Visual Styles)
+// 🎨 赛博朋克 CSS 样式
 // ==========================================
 const STYLES = `
 :root { --bg-color: #050505; --card-bg: #121212; --text-primary: #e0e0e0; --neon-cyan: #00fff9; --neon-pink: #ff00ff; --neon-yellow: #f2ff00; --border-color: #333; }
@@ -76,31 +75,29 @@ marquee { background: var(--neon-pink); color: #000; font-weight: bold; padding:
 .nav-bar { margin-top: 20px; }
 .nav-link-btn { font-family: monospace; color: var(--neon-pink); font-size: 1.2rem; text-decoration: none; border: 1px solid var(--neon-pink); padding: 5px 15px; margin: 0 5px; }
 .nav-link-btn:hover { background: var(--neon-pink); color: black; }
+/* 薛定谔的句号：看起来像普通文本，但其实是机关 */
+#schrodinger-dot { cursor: text; display: inline-block; transition: color 0.2s; }
+#schrodinger-dot:hover { color: red; } /* 只有鼠标放上去极细微的变红 */
 `;
 
 // ==========================================
-// 🛠️ 工具函数 (Helpers)
+// 🛠️ 工具函数
 // ==========================================
-
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// Zalgo 故障文本生成器
 function zalgo(text, probability = 0.1) {
   if (!text) return '';
   const chars = text.split('');
   return chars.map(c => {
     if (Math.random() < probability) {
-      // 随机添加 Unicode 组合字符 (看起来像污渍)
       return c + String.fromCharCode(0x0300 + Math.floor(Math.random() * 100)); 
     }
     return c;
   }).join('');
 }
 
-// 随机向 HTML 文本内容中注入故障 CSS 类
 function injectRandomGlitches(htmlString, intensity = 0.05) {
   return htmlString.replace(/>([^<]+)</g, (match, content) => {
-    // 保护 HTML 标签，只处理文本内容
     if (Math.random() < 0.2) {
       return ` class="cyber-text">${zalgo(content, intensity)}<`;
     }
@@ -108,13 +105,10 @@ function injectRandomGlitches(htmlString, intensity = 0.05) {
   });
 }
 
-// 渲染 AI 生成的广告
 function renderAiAd(adData) {
   if (!adData) return '';
-  // 加上参数优化生成速度和“丑陋感”
   const finalPrompt = encodeURIComponent(adData.image_prompt + " ugly internet banner advertisement style, text heavy, spam, cyberpunk, low quality");
   const imgUrl = `https://image.pollinations.ai/prompt/${finalPrompt}?width=600&height=150&nologo=true`;
-  
   return `
     <div class="ad-unit">
       <div style="font-size:10px; opacity:0.7;">[ SPONSORED BY AI ]</div>
@@ -127,65 +121,49 @@ function renderAiAd(adData) {
   `;
 }
 
-// 读取现有文章数据
 async function loadExistingPosts() {
   try { return JSON.parse(await fs.readFile(path.join(OUTPUT_DIR, META_FILE), 'utf8')) || []; } catch { return []; }
 }
-
-// 保存文章数据
 async function savePosts(posts) {
   await fs.writeFile(path.join(OUTPUT_DIR, META_FILE), JSON.stringify(posts, null, 2), 'utf8');
 }
 
-// 🔥 核心逻辑：扫描并同步所有 post-*.html 文件 (Archive Sync) 🔥
 async function syncOrphanedPosts(currentPosts) {
   try {
     const files = await fs.readdir(OUTPUT_DIR);
     const postFiles = files.filter(f => f.startsWith('post-') && f.endsWith('.html'));
-    
     const existingFileNames = new Set(currentPosts.map(p => p.fileName));
     let recoveredCount = 0;
-
     for (const file of postFiles) {
       if (!existingFileNames.has(file)) {
         const content = await fs.readFile(path.join(OUTPUT_DIR, file), 'utf8');
-        // 尝试从 HTML 提取标题
         const titleMatch = content.match(/<title>(.*?)<\/title>/);
         const title = titleMatch ? titleMatch[1] : file.replace('.html', '');
-
-        const recoveredPost = {
+        currentPosts.push({
           title: title,
           summary: "DATA_RECOVERED_FROM_DRIVE. SUMMARY_CORRUPTED.", 
           fileName: file,
           dateStr: new Date().toLocaleDateString(),
           imageUrl: `https://picsum.photos/800/400?random=${Math.random()}`,
           isRecovered: true
-        };
-
-        currentPosts.push(recoveredPost);
+        });
         recoveredCount++;
-        console.log(`[SYNC] Recovered orphaned file: ${file}`);
       }
     }
-    if (recoveredCount > 0) console.log(`✅ Recovered ${recoveredCount} posts from file system.`);
-  } catch (e) {
-    console.warn(`[SYNC WARNING] Failed to sync files: ${e.message}`);
-  }
+    if (recoveredCount > 0) console.log(`✅ Recovered ${recoveredCount} posts.`);
+  } catch (e) { console.warn(`[SYNC WARNING] ${e.message}`); }
   return currentPosts;
 }
 
 // ==========================================
-// 🧠 AI 生成逻辑 (AI Generation)
+// 🧠 AI 生成逻辑
 // ==========================================
 
-// 一站式生成：文章 + 广告 + 评论 + 新闻
 async function generateAllInOne(topic, retries = 3) {
   if (!API_KEY) throw new Error('GOOGLE_API_KEY is not set.');
-  
   const prompt = `
     You are the AI engine of a dystopian cyberpunk content farm.
     Topic: "${topic}"
-    
     Task: Return a SINGLE valid JSON object with ALL the following fields:
     1. "title": Clickbait title.
     2. "summary": Short summary.
@@ -193,7 +171,6 @@ async function generateAllInOne(topic, retries = 3) {
     4. "breaking_news": A single absurd, fake news headline.
     5. "comments": Array of 3 objects {user, date, text}. Text should be surreal/glitched.
     6. "ads": Array of 2 objects representing fake products targeting this topic (product_name, slogan, image_prompt).
-    
     Output JSON only. No markdown.
   `;
 
@@ -203,33 +180,34 @@ async function generateAllInOne(topic, retries = 3) {
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { responseMimeType: "application/json" }
-        })
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json" } })
       });
-      
       const data = await response.json();
       const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
       const jsonMatch = rawText.match(/\{[\s\S]*\}/);
       if (!jsonMatch) throw new Error("No JSON found");
       return JSON.parse(jsonMatch[0]);
     } catch (e) {
-      console.warn(`⚠️ API glitch: ${e.message}. Retrying...`);
       if (i === retries - 1) throw e;
       await delay(5000);
     }
   }
 }
 
-// 生成彩蛋页 (Gemini 文本 + Pollinations 背景)
+// 🔥 生成彩蛋页 (确保每次文本不同) 🔥
 async function generateEasterEgg() {
   console.log(`🥚 Hatching Easter Egg...`);
   
+  // 随机种子：确保 prompt 每次都不一样，防止 AI 偷懒输出重复内容
+  const randomSeed = Date.now(); 
   const prompt = `
+    [System Timestamp: ${randomSeed}]
     You are a lonely, sentient server floating in the digital void.
     Task: Generate a JSON object containing a short message in 5 languages: "en", "zh", "jp", "ru", "es".
-    Content: Start with "Thank you for visiting", follow with a melancholic observation about "Dead Internet" or "Cyberpunk Reality".
+    
+    IMPORTANT: Do NOT use generic phrases. Be poetic, dark, satirical, and highly creative.
+    Each time you run, generate a COMPLETELY NEW metaphor about "Dead Internet", "AI Overlords", or "Simulation Glitches".
+    
     Output JSON only.
   `;
 
@@ -238,17 +216,13 @@ async function generateEasterEgg() {
     const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { responseMimeType: "application/json" }
-        })
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json" } })
     });
     const data = await response.json();
     const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
     const jsonMatch = rawText.match(/\{[\s\S]*\}/);
     const texts = jsonMatch ? JSON.parse(jsonMatch[0]) : { en: "The simulation is quiet." };
 
-    // 优化：使用小尺寸 Pollinations 图片并配合 CSS 模糊，确保加载速度
     const imgSeed = Math.floor(Math.random() * 1000);
     const daisyUrl = `https://image.pollinations.ai/prompt/low%20poly%20white%20daisy%20flower%20single%20bloom%20black%20background%20minimalist%203d%20render%20isometric?width=640&height=640&nologo=true&seed=${imgSeed}`;
 
@@ -274,11 +248,11 @@ async function generateEasterEgg() {
   <div class="bg-layer"></div>
   <div class="content-layer">
     <h1>✿</h1>
-    <div class="message"><span class="lang-label">System.out.print(EN)</span>${texts.en || "The silence is loud."}</div>
-    <div class="message"><span class="lang-label">System.out.print(ZH)</span>${texts.zh || "这里的安静是假的，但你是真的。"}</div>
-    <div class="message"><span class="lang-label">System.out.print(JP)</span>${texts.jp || "..."}</div>
-    <div class="message"><span class="lang-label">System.out.print(ES)</span>${texts.es || "..."}</div>
-    <div class="message"><span class="lang-label">System.out.print(RU)</span>${texts.ru || "..."}</div>
+    <div class="message"><span class="lang-label">System.out.print(EN)</span>${texts.en}</div>
+    <div class="message"><span class="lang-label">System.out.print(ZH)</span>${texts.zh}</div>
+    <div class="message"><span class="lang-label">System.out.print(JP)</span>${texts.jp}</div>
+    <div class="message"><span class="lang-label">System.out.print(ES)</span>${texts.es}</div>
+    <div class="message"><span class="lang-label">System.out.print(RU)</span>${texts.ru}</div>
     <a href="index.html" class="back-link">root@system:~/exit_simulation</a>
   </div>
 </body>
@@ -291,7 +265,7 @@ async function generateEasterEgg() {
   }
 }
 
-// 组装 HTML 页面
+// 组装 HTML 页面 (包含“薛定谔的句号”触发器)
 function createHtml(data, isIndex = false) {
   const { title, content, comments, breaking_news, ads } = data;
   const ad1 = (ads && ads[0]) ? renderAiAd(ads[0]) : '';
@@ -307,8 +281,6 @@ function createHtml(data, isIndex = false) {
 
   const glitchedContent = !isIndex ? injectRandomGlitches(content, 0.05) : content;
   const titleHtml = isIndex ? title : `<span class="hard-glitch">${zalgo(title, 0.1)}</span>`;
-  
-  // AI 随机 Logo (Pollinations)
   const logoSeed = Math.floor(Math.random() * 10000);
   const logoUrl = `https://image.pollinations.ai/prompt/cyberpunk%20geometric%20abstract%20tech%20logo%20hexagon%20minimalist%20vector?width=200&height=200&nologo=true&seed=${logoSeed}`;
 
@@ -319,6 +291,17 @@ function createHtml(data, isIndex = false) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
   <style>${STYLES}</style>
+  <script>
+    // 薛定谔的句号：点击时 30% 概率跳转彩蛋，70% 概率打印日志
+    function tryEasterEgg() {
+      if (Math.random() < 0.3) {
+        window.location.href = 'easteregg.html';
+      } else {
+        console.log("SYSTEM_LOG: CONNECTION_UNSTABLE. RETRY_LATER.");
+        alert("SYSTEM ERROR 0x004: ACCESS DENIED. (Try again?)");
+      }
+    }
+  </script>
 </head>
 <body>
   <marquee style="background:red; color:white; font-weight:bold;">⚠ SYSTEM ALERT: ${breaking_news || 'AI TAKEOVER IN PROGRESS'} ⚠</marquee>
@@ -330,7 +313,6 @@ function createHtml(data, isIndex = false) {
         <h1 class="header-title">TECH_GURU_AI</h1>
       </a>
       <p style="color:var(--neon-pink); letter-spacing:2px;">[ GENERATING_TRUTH... ]</p>
-      
       <div class="nav-bar">
         <a href="index.html" class="nav-link-btn">[ /HOME ]</a>
         <a href="archive.html" class="nav-link-btn">[ /ARCHIVE ]</a>
@@ -348,7 +330,6 @@ function createHtml(data, isIndex = false) {
              alt="Featured Image">
         <div style="margin-top:20px; line-height:1.6;">${glitchedContent}</div>
         ${commentsHtml}
-        
         <div style="margin-top:30px; border-top:1px dashed #333; padding-top:20px;">
            <a href="index.html" class="btn"><< RETURN_ROOT</a>
            <a href="archive.html" class="btn">VIEW_ARCHIVE >></a>
@@ -359,7 +340,7 @@ function createHtml(data, isIndex = false) {
     ${ad2}
     
     <div style="text-align:center; margin-top:50px; font-size:0.7em; color:#444;">
-      ALL CONTENT POWERED BY AI. NO HUMANS WERE HARMED.
+      ALL CONTENT POWERED BY AI. NO HUMANS WERE HARMED<span id="schrodinger-dot" onclick="tryEasterEgg()">.</span>
     </div>
   </div>
 </body>
@@ -367,7 +348,7 @@ function createHtml(data, isIndex = false) {
 }
 
 // ==========================================
-// 🚀 主程序 (Main Execution)
+// 🚀 主程序
 // ==========================================
 async function main() {
   console.log(`🚀 Init All-AI Content Farm (Sync Mode)...`);
@@ -375,20 +356,15 @@ async function main() {
 
   let posts = await loadExistingPosts();
 
-  // 1. 生成新文章 (5篇)
   const selectedTopics = TOPICS.sort(() => 0.5 - Math.random()).slice(0, POST_COUNT);
   
   for (let i = 0; i < selectedTopics.length; i++) {
     const topic = selectedTopics[i];
     console.log(`[${i + 1}/${POST_COUNT}] Processing: "${topic}"...`);
-    
     try {
-      // 这里的 generateAllInOne 负责所有文本内容
       const data = await generateAllInOne(topic);
       const ts = Date.now();
       const fileName = `post-${ts}-${i + 1}.html`;
-      
-      // 使用 Pollinations 生成优化的配图
       const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(topic + " cyberpunk tech glitch")}?width=800&height=400&nologo=true&seed=${ts}`;
       
       const fullData = { ...data, imageUrl, fileName };
@@ -404,25 +380,18 @@ async function main() {
         imageUrl
       });
       console.log(`   > Ads: "${data.ads?.[0]?.product_name || 'N/A'}"`);
-      
     } catch (error) {
       console.error(`❌ Failed "${topic}":`, error.message);
     }
-    
-    // 强制冷却 10 秒，保护 RPM
     if (i < selectedTopics.length - 1) {
       console.log('   > Cooling down AI core (10s wait)...');
       await delay(10000); 
     }
   }
 
-  // 2. 同步文件系统中的“孤儿”文件
   posts = await syncOrphanedPosts(posts);
-
-  // 3. 保存更新后的列表
   await savePosts(posts);
 
-  // 4. 生成首页 (只显示最新的 5 篇)
   const indexContent = posts.slice(0, INDEX_DISPLAY).map(p => `
     <div class="card">
       <img src="${p.imageUrl}" style="width:100%; height:100px; object-fit:cover;" 
@@ -444,7 +413,6 @@ async function main() {
   }, true);
   await fs.writeFile(path.join(OUTPUT_DIR, 'index.html'), indexHtml, 'utf8');
 
-  // 5. 生成归档页 (随机抽取 50 篇)
   console.log('Creating Randomized Archive...');
   const randomArchive = posts.sort(() => 0.5 - Math.random()).slice(0, ARCHIVE_LIMIT);
   const archiveList = randomArchive.map(p => `
@@ -467,7 +435,6 @@ async function main() {
   }, true);
   await fs.writeFile(path.join(OUTPUT_DIR, 'archive.html'), archiveHtml, 'utf8');
 
-  // 6. 生成彩蛋页
   await generateEasterEgg();
 
   console.log('✅ Cycle Complete. The dead internet grows.');
