@@ -1,5 +1,40 @@
 [
   {
+    "title": "NEURAL NETWORK SHATTERED: Build Unbreakable Microservices or Face Systemic Collapse!",
+    "summary": "Learn to weaponize circuit breakers and fallback protocols to shield your distributed systems from cascading failures in the neon-drenched underbelly of the digital metropolis.",
+    "fileName": "post-1765501364239-5.html",
+    "dateStr": "12/12/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Designing%20resilient%20microservices%20using%20circuit%20breakers%20and%20fallback%20strategies%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1765501364239"
+  },
+  {
+    "title": "DON'T DEPLOY CLOUDFLARE WORKERS UNTIL YOU READ THIS: The 5 Cyber-Nightmares Haunting Your Production Stack!",
+    "summary": "Uncover the shadowy vulnerabilities lurking within Cloudflare Workers. Learn to dodge digital specters and secure your edge deployments before your data gets re-coded.",
+    "fileName": "post-1765501349010-4.html",
+    "dateStr": "12/12/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Common%20security%20pitfalls%20when%20deploying%20and%20maintaining%20Cloudflare%20Workers%20in%20production%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1765501349010"
+  },
+  {
+    "title": "CYBER-OPTIMIZE YOUR POSTGRES: 10X PRODUCTION SPEED OR FACE THE DIGITAL VOID!",
+    "summary": "Unlock raw PostgreSQL power for your hyper-demanding production matrices. Our chronometric optimization protocols guarantee sub-millisecond latency or your data gets re-sequenced.",
+    "fileName": "post-1765501333663-3.html",
+    "dateStr": "12/12/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/PostgreSQL%20query%20performance%20tuning%20tactics%20for%20production%20workloads%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1765501333663"
+  },
+  {
+    "title": "UNLOCK THE ALGORITHMS! Git Mastery for the Lone Cyber-Samurai & Micro-Syndicates!",
+    "summary": "Dominate your solo code-scapes or micro-collective with these quantum-leap Git workflows. No more existential repo-voids!",
+    "fileName": "post-1765501319462-2.html",
+    "dateStr": "12/12/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Git%20workflows%20that%20work%20well%20for%20solo%20developers%20and%20very%20small%20teams%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1765501319462"
+  },
+  {
+    "title": "Zero-Downtime Database Migration: The Future is NOW (and You're Losing Money!)",
+    "summary": "Stop your apps from crashing! Learn the bleeding-edge techniques for seamless database migrations in the blink of an eye. Protect your data streams!",
+    "fileName": "post-1765501303988-1.html",
+    "dateStr": "12/12/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Zero-downtime%20database%20migration%20patterns%20for%20web%20applications%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1765501303988"
+  },
+  {
     "title": "Unleash Your Inner Code-Samurai: Python Hacks the System for MAX Productivity!",
     "summary": "Decode the matrix of your daily grind with these hyper-efficient Python scripting stratagems. Optimize your workflow, obliterate inefficiency, and ascend to ultimate automation nirvana.",
     "fileName": "post-1765414981749-5.html",
