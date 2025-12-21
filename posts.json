@@ -1,5 +1,40 @@
 [
   {
+    "title": "Rust Ownership: The Cybernetic Grip on Your Data - Don't Get Deallocated!",
+    "summary": "Unlock the secrets of Rust's ownership and borrowing systems. Navigate the data streams without causing memory cascades. Essential for any bio-augmented coder.",
+    "fileName": "post-1766279217776-5.html",
+    "dateStr": "12/21/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Understanding%20Rust%20ownership%20and%20borrowing%20through%20concrete%2C%20practical%20examples%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766279217776"
+  },
+  {
+    "title": "Vim vs. Emacs: The Code-Warrior Showdown That Will Fry Your Neural Implants!",
+    "summary": "Decades-old text editors clash in a binary battle. Which digital leviathan will reign supreme in your augmented reality workflow?",
+    "fileName": "post-1766279202585-4.html",
+    "dateStr": "12/21/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20neutral%20comparison%20of%20Vim%20and%20Emacs%20from%20the%20perspective%20of%20a%20long-time%20developer%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766279202585"
+  },
+  {
+    "title": "QUANTUM-LEAP YOUR CODING FLOW: The Pomodoro Protocol for Hyper-Productivity!",
+    "summary": "Unlock peak computational efficiency with the bio-rhythmic chrono-sync of the Pomodoro Technique. Optimize your neural pathways for ultimate code-slinging.",
+    "fileName": "post-1766279187241-3.html",
+    "dateStr": "12/21/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/The%20science%20behind%20the%20Pomodoro%20technique%20and%20how%20coders%20can%20adapt%20it%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766279187241"
+  },
+  {
+    "title": "PROMETHEUS HAUL: CRUNCH THE CYBER-NET'S METRICS FASTER THAN A NEURAL OVERCLOCK!",
+    "summary": "Unleash the full potential of your data streams. Learn how to forge an unbreachable monitoring nexus with Prometheus and Grafana, optimizing your network's bio-digital pulse.",
+    "fileName": "post-1766279173633-2.html",
+    "dateStr": "12/21/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Setting%20up%20effective%20infrastructure%20monitoring%20with%20Prometheus%20and%20Grafana%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766279173633"
+  },
+  {
+    "title": "STOP DUMPING DATA! 5 MANDATORY VPS FIXES BEFORE THE GRID GOES SILENT (2025 EDITION)",
+    "summary": "Your tiny server is a ticking time bomb. Prevent digital oblivion with these crucial, bleeding-edge maintenance hacks. Don't get left in the digital dust, meatbag!",
+    "fileName": "post-1766279158532-1.html",
+    "dateStr": "12/21/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Essential%20Linux%20Server%20Maintenance%20tips%20for%20small%20VPS%20setups%20in%202025%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766279158532"
+  },
+  {
     "title": "NEVER CODE WITHOUT IT: The Secret Cyber-Brewing Ritual REVOLUTIONIZING Dev Productivity!",
     "summary": "Unlock peak performance by integrating a high-octane, low-latency coffee brewing ritual into your neural net workflow. This guide decodes the essential steps for maximum cognitive overclocking.",
     "fileName": "post-1766192344671-5.html",
