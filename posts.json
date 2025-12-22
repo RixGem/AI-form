@@ -1,5 +1,40 @@
 [
   {
+    "title": "Cloudflare Workers: The Shadowy Security Cracks That WILL Fry Your Data!",
+    "summary": "Are your serverless deployments a ticking time bomb? We expose the critical security oversights plaguing production Cloudflare Workers, from data exfiltration vectors to unauthorized access conduits. Upgrade or face the digital abyss!",
+    "fileName": "post-1766365538824-5.html",
+    "dateStr": "12/22/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Common%20security%20pitfalls%20when%20deploying%20and%20maintaining%20Cloudflare%20Workers%20in%20production%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766365538824"
+  },
+  {
+    "title": "GRID VS FLEXBOX 2025: Your Brain Will MELT From This CSS Revelation!",
+    "summary": "The ultimate showdown for web architects: Flexbox and Grid, redefined for the bleeding edge of 2025. Prepare for paradigm shifts that will fracture reality.",
+    "fileName": "post-1766365523394-4.html",
+    "dateStr": "12/22/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/How%20to%20think%20about%20modern%20CSS%20layout%3A%20Grid%20vs%20Flexbox%20in%202025%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766365523394"
+  },
+  {
+    "title": "Vim vs. Emacs: The Ultimate Code-Slayer Showdown You Won't Survive!",
+    "summary": "Two ancient editors, two warring factions. Which monolithic text-manipulation matrix will reign supreme in the chrome-plated wasteland of your workday? We dissect the neuro-synaptic pathways of the true code-slaves.",
+    "fileName": "post-1766365509348-3.html",
+    "dateStr": "12/22/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20neutral%20comparison%20of%20Vim%20and%20Emacs%20from%20the%20perspective%20of%20a%20long-time%20developer%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766365509348"
+  },
+  {
+    "title": "CYBER-SPEED BOOST: UNLOCK MAX LCP/CLS! YOUR SITE IS SLOW LIKE A NEURAL LAGGING BOT!",
+    "summary": "Optimize your web presence from 500ms to sub-100ms. Maximize user engagement metrics with bleeding-edge frontend hacks. Don't get left in the digital dust!",
+    "fileName": "post-1766365492934-2.html",
+    "dateStr": "12/22/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Modern%20frontend%20performance%20optimizations%20that%20significantly%20improve%20LCP%20and%20CLS%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766365492934"
+  },
+  {
+    "title": "CRASH-PROOF YOUR CODE: Circuit Breakers & Fallbacks for the Cybernetic Age!",
+    "summary": "Learn how to build unkillable microservices with temporal displacement circuits and quantum entanglement fallbacks. Don't let your network flatline!",
+    "fileName": "post-1766365476706-1.html",
+    "dateStr": "12/22/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Designing%20resilient%20microservices%20using%20circuit%20breakers%20and%20fallback%20strategies%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766365476706"
+  },
+  {
     "title": "Rust Ownership: The Cybernetic Grip on Your Data - Don't Get Deallocated!",
     "summary": "Unlock the secrets of Rust's ownership and borrowing systems. Navigate the data streams without causing memory cascades. Essential for any bio-augmented coder.",
     "fileName": "post-1766279217776-5.html",

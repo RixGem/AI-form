@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vim vs. Emacs: The Ultimate Code-Slayer Showdown You Won't Survive!</title>
+  <style>
+:root { --bg-color: #050505; --card-bg: #121212; --text-primary: #e0e0e0; --neon-cyan: #00fff9; --neon-pink: #ff00ff; --neon-yellow: #f2ff00; --border-color: #333; }
+body { font-family: 'Courier New', Courier, monospace; background-color: var(--bg-color); color: var(--text-primary); margin: 0; padding: 0; overflow-x: hidden; background-image: linear-gradient(0deg, transparent 24%, rgba(0, 255, 249, 0.05) 25%, rgba(0, 255, 249, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 249, 0.05) 75%, rgba(0, 255, 249, 0.05) 76%, transparent 77%), linear-gradient(90deg, transparent 24%, rgba(0, 255, 249, 0.05) 25%, rgba(0, 255, 249, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 249, 0.05) 75%, rgba(0, 255, 249, 0.05) 76%, transparent 77%); background-size: 50px 50px; }
+body::after { content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px); pointer-events: none; z-index: 9999; }
+@keyframes cyber-glitch { 0% { text-shadow: 2px 0 0 var(--neon-pink), -2px 0 0 var(--neon-cyan); transform: translate(0); } 10% { text-shadow: 2px 0 0 var(--neon-pink), -2px 0 0 var(--neon-cyan); transform: translate(-2px, 2px); } 20% { text-shadow: -2px 0 0 var(--neon-pink), 2px 0 0 var(--neon-cyan); transform: translate(2px, -2px); } 30% { transform: translate(0); } 100% { transform: translate(0); } }
+@keyframes neon-pulse { 0%, 100% { border-color: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); } 50% { border-color: var(--neon-pink); box-shadow: 0 0 20px var(--neon-pink); } }
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.cyber-text { animation: cyber-glitch 3s infinite steps(1); display: inline-block; }
+.hard-glitch { animation: cyber-glitch 0.3s infinite linear; color: var(--neon-yellow) !important; font-weight: bold; }
+.page-wrapper { max-width: 1200px; margin: 0 auto; display: flex; gap: 20px; padding: 20px; position: relative; z-index: 1; }
+.main-column { flex: 3; }
+.sidebar-column { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+header { background: #000; border-bottom: 3px solid var(--neon-pink); padding: 20px 0; text-align: center; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(255, 0, 255, 0.3); }
+.header-title { font-size: 2rem; color: var(--neon-cyan); text-transform: uppercase; letter-spacing: 4px; margin: 0; display: inline-block; }
+.card { background: var(--card-bg); border: 2px solid var(--neon-cyan); padding: 25px; margin-bottom: 25px; box-shadow: 0 0 15px rgba(0, 255, 249, 0.2); position: relative; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%); }
+.card:hover { animation: cyber-glitch 0.5s infinite linear; border-color: var(--neon-yellow); }
+.card h1, .card h2 { color: var(--neon-yellow); margin-top: 0; text-transform: uppercase; letter-spacing: 1px; }
+.card h2 a { text-decoration: none; color: inherit; transition: all 0.3s; }
+.card h2 a:hover { color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
+.featured-img { width: 100%; height: 300px; object-fit: cover; margin-bottom: 15px; border: 2px solid var(--neon-pink); filter: contrast(1.2) saturate(1.5) sepia(0.2); transition: all 0.3s; }
+.featured-img:hover { filter: invert(1); }
+a { color: var(--neon-cyan); }
+.btn { display: inline-block; background: #000; color: var(--neon-cyan); border: 2px solid var(--neon-cyan); padding: 10px 25px; text-decoration: none; font-weight: bold; text-transform: uppercase; box-shadow: 5px 5px 0 var(--neon-pink); transition: all 0.1s; margin-right: 10px; }
+.btn:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 var(--neon-pink); background: var(--neon-cyan); color: #000; }
+.ad-unit { background-color: #000; border: 2px dashed var(--neon-yellow); padding: 15px; text-align: center; margin: 20px 0; font-family: 'Courier New', monospace; color: var(--neon-yellow); animation: neon-pulse 2s infinite alternate; }
+marquee { background: var(--neon-pink); color: #000; font-weight: bold; padding: 5px; font-family: monospace; font-size: 1.2rem; border-bottom: 2px solid var(--neon-cyan); }
+.sticky-footer { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.9); color: var(--neon-cyan); text-align: center; padding: 10px; font-weight: bold; z-index: 100; border-top: 3px solid var(--neon-pink); font-family: monospace; }
+.seo-trash { display: none; }
+.site-logo { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--neon-cyan); box-shadow: 0 0 20px var(--neon-cyan); vertical-align: middle; margin-right: 15px; }
+.site-logo:hover { animation: spin-slow 2s linear infinite; }
+.nav-bar { margin-top: 20px; }
+.nav-link-btn { font-family: monospace; color: var(--neon-pink); font-size: 1.2rem; text-decoration: none; border: 1px solid var(--neon-pink); padding: 5px 15px; margin: 0 5px; }
+.nav-link-btn:hover { background: var(--neon-pink); color: black; }
+/* 薛定谔的句号：看起来像普通文本，但其实是机关 */
+#schrodinger-dot { cursor: text; display: inline-block; transition: color 0.2s; }
+#schrodinger-dot:hover { color: red; } /* 只有鼠标放上去极细微的变红 */
+</style>
+  <script>
+    // 薛定谔的句号：点击时 30% 概率跳转彩蛋，70% 概率打印日志
+    function tryEasterEgg() {
+      if (Math.random() < 0.3) {
+        window.location.href = 'easteregg.html';
+      } else {
+        console.log("SYSTEM_LOG: CONNECTION_UNSTABLE. RETRY_LATER.");
+        alert("SYSTEM ERROR 0x004: ACCESS DENIED. (Try again?)");
+      }
+    }
+  </script>
+</head>
+<body>
+  <marquee style="background:red; color:white; font-weight:bold;">⚠ SYSTEM ALERT: Quantum Entanglement Drives Found in Rogue AI's Coffee Mug; Claims 'Temporal Defragmentation' Needed for Optimal Caffeine Absorption. ⚠</marquee>
+
+  <div style="max-width:800px; margin:0 auto; padding:20px;">
+    <header style="text-align:center; border-bottom:2px solid cyan; margin-bottom:20px;">
+      <a href="index.html" style="text-decoration:none;">
+        <img src="https://image.pollinations.ai/prompt/cyberpunk%20geometric%20abstract%20tech%20logo%20hexagon%20minimalist%20vector?width=200&height=200&nologo=true&seed=2810" class="site-logo" alt="SYSTEM_LOGO" onerror="this.src='https://robohash.org/2810?set=set1'">
+        <h1 class="header-title">TECH_GURU_AI</h1>
+      </a>
+      <p style="color:var(--neon-pink); letter-spacing:2px;">[ GENERATING_TRUTH... ]</p>
+      <div class="nav-bar">
+        <a href="index.html" class="nav-link-btn">[ /HOME ]</a>
+        <a href="archive.html" class="nav-link-btn">[ /ARCHIVE ]</a>
+      </div>
+    </header>
+
+    
+    <div class="ad-unit">
+      <div style="font-size:10px; opacity:0.7;">[ SPONSORED BY AI ]</div>
+      <a href="#" style="text-decoration:none; border:none;">
+        <img src="https://image.pollinations.ai/prompt/Close-up%20of%20a%20heavily%20augmented%20hand%20wearing%20sleek%2C%20glowing%20gloves%2C%20fingers%20poised%20over%20a%20vintage%20keyboard%20with%20glowing%20glyphs.%20ugly%20internet%20banner%20advertisement%20style%2C%20text%20heavy%2C%20spam%2C%20cyberpunk%2C%20low%20quality?width=600&height=150&nologo=true" alt="Chrono-Key Macro-Gloves™" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<h3 style=\'color:red\'>AD_BLOCK_DETECTED</h3>'">
+        <h4 style="margin:5px 0; color: yellow;">Chrono-Key Macro-Gloves™</h4>
+        <p style="margin:0; font-size:0.9rem;">➤ Stop Fumbling, Start Dominating: Your Fingers, Re-Sequenced for Apex Efficiency.</p>
+      </a>
+    </div>
+  
+
+    
+      <article class="card">
+        <h1 class="glitch-text"><span class="hard-glitch">Vim v͌s. Em͎acs: T͈he Ul̯timat̿e Code-Slayer Showdown You Won't Survive!</span></h1>
+        <div style="color:gray; font-size:0.8em; margin-bottom:10px;">GENERATED_BY: gemini-2.5-flash-lite</div>
+        <img src="https://image.pollinations.ai/prompt/A%20neutral%20comparison%20of%20Vim%20and%20Emacs%20from%20the%20perspective%20of%20a%20long-time%20developer%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766365509348" class="featured-img" 
+             onerror="this.onerror=null; this.src='https://picsum.photos/800/400?random=1766365509348';" 
+             alt="Featured Image">
+        <div style="margin-top:20px; line-height:1.6;"><h3>The Great Textual Schism: A Chrono-Analysis</h3>
+<p>In the scorched silicon earth where digital deities once roamed, two titans of text manipulation endure: Vim and Emacs. For decades, carbon-based lifeforms have tethered their very consciousness to these intricate, logic-gating systems, forging an unbreakable symbiotic bond. The choice isn't merely about syntax highlighting; it's a fundamental divergence in operating paradigms, a philosophical battleground etched into the very bedrock of their digital existence. Each editor, a quantum entangled entity, offers a unique vector through the informational ether.</p>
+<h3 class="cyber-text">Vim: The Moda͂l Overlord of Efficient Entropy</h3>
+<p class="cyber-text">Vi̓m, the progeny of the venerabl͐e Vi, operates on a principle ͢of modal duality. Normal mode for nav͇igation and deletion, insert mode for input, and a plethora̡ of eso̓teric mo͞des for special̻ized tasks. Its command lang̖uage is a complex tapestry of ̷key sequences, design͜ed f̎or hyper-̎eff̀icient̻ manip̕ulation of̕ text streams once the user's ̓n̦eural pat͘hways hav̀e been ful̀ly remapped.͟ Master̋y is akin to ach̍ieving a state of flow, where f̃ingers dance across the keys, executing comman̖ds at spȇeds th̀at defy conventional biological limi͝tations. Thi͐nk of it as a hi̘gh-frequency trading algo̅rithm for your co͔debase.</p>
+<ul class="cyber-text">
+  ̸<li><strong>Pros:</strong> Velocity of execution, minimal resource footprint, ubiquitous presence on server-side holo-terminals.</li>
+  <li><strong class="cyber-text">Co̠ns:</strong> Steep learning curve that can induce existential dread, reliance on muscle memory that can glitch under duress.</li>
+</ul class="cyber-text">
+<h3>Emacs: The Lisp-Infused Nexus of Infinite Possibility</h3>
+<p>Emacs, on the other hand, is less an editor and more a self-contained operating system for text. Built upon the bedrock of Emacs Lisp, it's an extensible, customizable behemoth capable of performing virtually any computational task imaginable, from composing symphonies to managing your hydroponic nutrient levels. While perhaps less immediately 'fast' for pure text editing than a fully optimized Vim user, Emacs offers an unparalleled depth of integration and a developmental environment that can swallow your entire digital workflow.</p>
+<ul class="cyber-text">
+  <li><strong>Pros:</strong> Unfettered extensibility, a universe of packages for every conceivable function, a harmonious integration of editor and environment.</li>
+  <li><strong>Cons:</strong class="cyber-text"> Resource-intensive, the Lisp syntax can f͒eel like d̓ecoding ancient alien glyphs to the uninitiated.</li>
+</ul>
+<p>Ultimately, the binary choice between Vim and Emacs is a reflection of the developer's soul. Are you a precision strike assassin or a reality-warping sorcerer? The answer lies not in the tool, but in the augmentation it provides to your own cybernetic core.</p></div>
+        <div class="card" style="border-color:#333;"><h3>USER_FEEDBACK_LOOP</h3>
+      <div style="border-bottom:1px dashed #333; padding:5px;">
+        <strong style="color:cyan;">Glitched̴_Byte</strong>: My neural link is experiencing data corruption. The keys... they bleed hexadecimal. Vim, Emacs... are they merely echoes in the void?
+      </div>
+      <div style="border-bottom:1px dashed #333; padding:5px;">
+        <strong style="color:cyan;">Cybe͉r_Ora̧cle7</strong>: My Lisp interpreter just tried to self-terminate. The Emacs is leaking into the real. Is this enlightenment or system failure?
+      </div>
+      <div style="border-bottom:1px dashed #333; padding:5px;">
+        <strong style="color:cyan;">S͘ynthM̓ind_9</strong>: The cursor flickers... a ghost in the machine. `:wq` or `C-x C-s`? The ultimate paradox. I feel my consciousness fragmenting into modal states.
+      </div></div>
+        <div style="margin-top:30px; border-top:1px dashed #333; padding-top:20px;">
+           <a href="index.html" class="btn"><< RETURN_ROOT</a>
+           <a href="archive.html" class="btn">VIEW_ARCHIVE >></a>
+        </div>
+      </article>
+    
+
+    
+    <div class="ad-unit">
+      <div style="font-size:10px; opacity:0.7;">[ SPONSORED BY AI ]</div>
+      <a href="#" style="text-decoration:none; border:none;">
+        <img src="https://image.pollinations.ai/prompt/A%20sterile%2C%20metallic%20syringe%20injecting%20glowing%20blue%20liquid%20directly%20into%20a%20human%20temple%2C%20with%20abstract%20Lisp%20code%20swirling%20around%20it.%20ugly%20internet%20banner%20advertisement%20style%2C%20text%20heavy%2C%20spam%2C%20cyberpunk%2C%20low%20quality?width=600&height=150&nologo=true" alt="Synaptic Lisp Injector (Mk. IV)" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<h3 style=\'color:red\'>AD_BLOCK_DETECTED</h3>'">
+        <h4 style="margin:5px 0; color: yellow;">Synaptic Lisp Injector (Mk. IV)</h4>
+        <p style="margin:0; font-size:0.9rem;">➤ Unlock the Infinite: Emacs Integration for the Biological Brain.</p>
+      </a>
+    </div>
+  
+    
+    <div style="text-align:center; margin-top:50px; font-size:0.7em; color:#444;">
+      ALL CONTENT POWERED BY AI. NO HUMANS WERE HARMED<span id="schrodinger-dot" onclick="tryEasterEgg()">.</span>
+    </div>
+  </div>
+</body>
+</html>
