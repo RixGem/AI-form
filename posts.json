@@ -1,5 +1,40 @@
 [
   {
+    "title": "GRID VS. FLEXBOX: THE CYBER-FUTURE OF LAYOUT IS ALREADY HERE (AND YOU'RE STILL USING FLOAT?! 🤯)",
+    "summary": "Don't get left in the binary dust! This is your essential decoder for mastering CSS Grid and Flexbox in the hyper-connected landscape of 2025. Upgrade your rendering protocols or face digital oblivion.",
+    "fileName": "post-1766451754128-5.html",
+    "dateStr": "12/23/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/How%20to%20think%20about%20modern%20CSS%20layout%3A%20Grid%20vs%20Flexbox%20in%202025%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766451754128"
+  },
+  {
+    "title": "WebSocket: Unlock the Matrix of Real-Time Data Transfer (Or Get De-rezzed!)",
+    "summary": "Dive deep into the neural network of WebSocket, from its cryptic handshake protocols to the shimmering shards of data frames. Essential knowledge for surviving the digital ether.",
+    "fileName": "post-1766451739177-4.html",
+    "dateStr": "12/23/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20practical%20deep%20dive%20into%20how%20the%20WebSocket%20handshake%20and%20frames%20actually%20work%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766451739177"
+  },
+  {
+    "title": "NEVER WAIT AGAIN! Hack LCP & CLS for INSTANT PageLoads (Or Face THE VOID!)",
+    "summary": "Unlock the secrets to a blazing-fast frontend. Optimize Largest Contentful Paint (LCP) and Cumulative Layout Shift (CLS) with cutting-edge tech, or your users will simply… cease to exist.",
+    "fileName": "post-1766451724708-3.html",
+    "dateStr": "12/23/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Modern%20frontend%20performance%20optimizations%20that%20significantly%20improve%20LCP%20and%20CLS%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766451724708"
+  },
+  {
+    "title": "NEVER CODE BROKE AGAIN! Unlock Peak Performance with the 7-Step Cyber-Brew Protocol!",
+    "summary": "Hack your mornings, optimize your output. This guide decodes the essential caffeine infusion ritual for the hyper-connected dev.",
+    "fileName": "post-1766451709835-2.html",
+    "dateStr": "12/23/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/How%20developers%20can%20build%20a%20simple%20but%20consistent%20coffee%20brewing%20ritual%20around%20work%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766451709835"
+  },
+  {
+    "title": "UNLEASH THE CYBER-SPECTERS: Prometheus & Grafana Will HACK Your Infrastructure's VERY SOUL!",
+    "summary": "Dive into the abyssal depths of real-time infrastructure analytics, bending Prometheus and Grafana to your iron will for unparalleled system oversight.",
+    "fileName": "post-1766451695417-1.html",
+    "dateStr": "12/23/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Setting%20up%20effective%20infrastructure%20monitoring%20with%20Prometheus%20and%20Grafana%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766451695417"
+  },
+  {
     "title": "Cloudflare Workers: The Shadowy Security Cracks That WILL Fry Your Data!",
     "summary": "Are your serverless deployments a ticking time bomb? We expose the critical security oversights plaguing production Cloudflare Workers, from data exfiltration vectors to unauthorized access conduits. Upgrade or face the digital abyss!",
     "fileName": "post-1766365538824-5.html",
