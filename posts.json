@@ -1,5 +1,40 @@
 [
   {
+    "title": "TypeScript Generics: Decode the Matrix of Type Safety Before Your Code Glitches Out!",
+    "summary": "Stop wrestling with type errors! This guide will supercharge your understanding of TypeScript generics, making your codebase a fortress against runtime anomalies.",
+    "fileName": "post-1766884216141-5.html",
+    "dateStr": "12/28/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Making%20sense%20of%20advanced%20TypeScript%20generics%20in%20everyday%20codebases%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766884216141"
+  },
+  {
+    "title": "DOCKER DEPTHS UNLEASHED: UNLOCK GOD-TIER CONTAINER EFFICIENCY OR FACE THE DATA VOID!",
+    "summary": "Beyond mere image slimming, delve into the forbidden arts of kernel exploitation, eBPF meta-programming, and nanite-infused resource allocation for Docker containers. Ascend your deployment matrix!",
+    "fileName": "post-1766884201728-4.html",
+    "dateStr": "12/28/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Real-world%20techniques%20for%20optimizing%20Docker%20containers%20beyond%20basic%20image%20slimming%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766884201728"
+  },
+  {
+    "title": "RUST'S SOUL-SCORCHING SECRETS: How Ownership Will RE-WIRE Your Brain (Or Fry It!)",
+    "summary": "Dive into the arcane rituals of Rust's ownership and borrowing. Understand memory management without sacrificing your neural implants.",
+    "fileName": "post-1766884186954-3.html",
+    "dateStr": "12/28/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Understanding%20Rust%20ownership%20and%20borrowing%20through%20concrete%2C%20practical%20examples%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766884186954"
+  },
+  {
+    "title": "CYBERATTACK IMMINENT! Your Cloudflare Workers Are LEAKING DATA Like a Sieve!",
+    "summary": "Deploying Cloudflare Workers without proper vetting is like leaving your chrome-plated cybernetic heart on the loading dock. This doc outlines the bleeding edge vulnerabilities you're probably missing.",
+    "fileName": "post-1766884172170-2.html",
+    "dateStr": "12/28/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Common%20security%20pitfalls%20when%20deploying%20and%20maintaining%20Cloudflare%20Workers%20in%20production%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766884172170"
+  },
+  {
+    "title": "Git Sync-or-Swim: Master the Solo Coder's Code Stream!",
+    "summary": "Navigate the treacherous currents of code versioning with Git workflows optimized for the lone wolf developer or the tight-knit cybernetic unit. Avoid data corruption and achieve quantum code coherence.",
+    "fileName": "post-1766884157877-1.html",
+    "dateStr": "12/28/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Git%20workflows%20that%20work%20well%20for%20solo%20developers%20and%20very%20small%20teams%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1766884157877"
+  },
+  {
     "title": "FORGE YOUR DIGITAL REALM: Prometheus & Grafana Unleash Omni-Surveillance on Your Data Matrix!",
     "summary": "Tired of rogue data packets and silent server sacrifices? Master the art of predictive analytics and total system dominion with the ultimate fusion of Prometheus and Grafana. No byte left unmonitored, no anomaly unpunished.",
     "fileName": "post-1766797285948-5.html",
