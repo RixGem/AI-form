@@ -1,5 +1,40 @@
 [
   {
+    "title": "GRID VS FLEXBOX 2025: The ULTIMATE Layout Hack Will BREAK Your Browser!",
+    "summary": "Forget everything you thought you knew. Grid and Flexbox aren't just layout tools; they're reality architects. Discover the quantum entanglement of modern CSS and ascend to layout godhood.",
+    "fileName": "post-1767143067787-5.html",
+    "dateStr": "12/31/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/How%20to%20think%20about%20modern%20CSS%20layout%3A%20Grid%20vs%20Flexbox%20in%202025%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767143067787"
+  },
+  {
+    "title": "BLAZING FAST CACHING: How We CRUSHED LATENCY with Redis and You CAN TOO!",
+    "summary": "Unlock the secrets to hyper-speed data retrieval. This guide dissects advanced Redis caching patterns engineered for the most demanding, low-latency applications in our hyper-connected dystopia.",
+    "fileName": "post-1767143053490-4.html",
+    "dateStr": "12/31/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Redis%20caching%20patterns%20for%20high-traffic%2C%20low-latency%20applications%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767143053490"
+  },
+  {
+    "title": "Cloudflare Workers: Your Code is Exposed! 5 Security Nightmares You're IGNORING!",
+    "summary": "Are your edge computations a gaping security hole? Discover the hidden dangers lurking in your Cloudflare Worker deployments, from data exfiltration vectors to critical misconfigurations. Secure your edge before the data-vampires strike!",
+    "fileName": "post-1767143037513-3.html",
+    "dateStr": "12/31/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/Common%20security%20pitfalls%20when%20deploying%20and%20maintaining%20Cloudflare%20Workers%20in%20production%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767143037513"
+  },
+  {
+    "title": "Vim vs. Emacs: The Cybernetic Editor Wars That Will Fry Your Neural Net!",
+    "summary": "A veteran coder dives deep into the binary abyss, dissecting the ancient architectures of Vim and Emacs. Prepare for a cranial data-stream collision!",
+    "fileName": "post-1767143022703-2.html",
+    "dateStr": "12/31/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20neutral%20comparison%20of%20Vim%20and%20Emacs%20from%20the%20perspective%20of%20a%20long-time%20developer%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767143022703"
+  },
+  {
+    "title": "K8s Pods Failing? Hack Your Way to Nirvana with These Debugging Hacks!",
+    "summary": "Is your microservice cluster a digital graveyard? Learn to resurrect dead pods and extract vital data streams before your capitalist overlords repossess your neural implants.",
+    "fileName": "post-1767143008390-1.html",
+    "dateStr": "12/31/2025",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20practical%20guide%20to%20debugging%20Kubernetes%20Pods%20and%20getting%20useful%20signals%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767143008390"
+  },
+  {
     "title": "CODE FASTER! Unlock Your Brain's Hidden Neural Accelerators with the Cyber-Pomodoro Protocol!",
     "summary": "Hack your productivity and overclock your synapses. Discover the neuro-biological secrets of temporal task segmentation and how to inject them into your coding workflow for maximum output.",
     "fileName": "post-1767056584580-5.html",
