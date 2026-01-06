@@ -1,5 +1,40 @@
 [
   {
+    "title": "Your Website is SLOW! 10 Cyber-Tricks to SMASH LCP & CLS Before the Glitch-ocalypse!",
+    "summary": "Is your frontend lagging behind the chrome-plated future? We expose forbidden techniques to obliterate Largest Contentful Paint and Cumulative Layout Shift, making your users' eyeballs melt with satisfaction. Don't get left in the digital dust!",
+    "fileName": "post-1767661456074-5.html",
+    "dateStr": "1/6/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Modern%20frontend%20performance%20optimizations%20that%20significantly%20improve%20LCP%20and%20CLS%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767661456074"
+  },
+  {
+    "title": "CYBERNETIC CHAOS! Circuit Breakers: Your Last Hope Against Microservice MELTDOWNS!",
+    "summary": "Shield your data streams from the relentless neural storms. Learn to engineer unbreakable microservices with advanced circuit breaker protocols and quantum fallback matrices.",
+    "fileName": "post-1767661441221-4.html",
+    "dateStr": "1/6/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Designing%20resilient%20microservices%20using%20circuit%20breakers%20and%20fallback%20strategies%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767661441221"
+  },
+  {
+    "title": "QUANTUM LEAP Your Productivity: MINIMALIST Dev Setup for MAX BRAINPOWER!",
+    "summary": "Unlock hyper-focus with a streamlined dev sanctuary. Ditch the digital clutter, embrace the zen, and code like a cyborg with this essential guide.",
+    "fileName": "post-1767661426085-3.html",
+    "dateStr": "1/6/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Designing%20a%20minimalist%20developer%20workspace%20that%20still%20boosts%20focus%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767661426085"
+  },
+  {
+    "title": "eBPF: The Glitched Oracle That Will Hack Your Sysadmin Brain (No Code Required!)",
+    "summary": "Unlock the secrets of eBPF without frying your neural implants. Understand its power and see how it's already running the show.",
+    "fileName": "post-1767661406118-2.html",
+    "dateStr": "1/6/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20beginner-friendly%20explanation%20of%20eBPF%20and%20realistic%20use%20cases%20for%20system%20administrators%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767661406118"
+  },
+  {
+    "title": "Hack Your Morning: Unlock Peak Productivity with This Bio-Optimized Caffeine Infusion Protocol!",
+    "summary": "Escape the corporate grind's monotony. Forge a neural pathway to peak performance with a streamlined, ritualistic coffee brewing process designed for the hyper-connected developer.",
+    "fileName": "post-1767661390646-1.html",
+    "dateStr": "1/6/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/How%20developers%20can%20build%20a%20simple%20but%20consistent%20coffee%20brewing%20ritual%20around%20work%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767661390646"
+  },
+  {
     "title": "CRITICAL FAILURE: Your Kubernetes Pods Are HAUNTED! 👻 Debugging SECRETS Revealed!",
     "summary": "Unlock the cryptic signals your failing Kubernetes Pods are screaming. This guide decodes the ghost-in-the-machine, transforming your debugging nightmare into a symphony of operational triumph. Avoid total system cascade failure!",
     "fileName": "post-1767575381784-5.html",
