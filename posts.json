@@ -1,5 +1,40 @@
 [
   {
+    "title": "Vim vs. Emacs: The Ancient Code-Wars That Still Burn Our Neural Implants!",
+    "summary": "Decades of digital dogma clash as veteran netrunners dissect the eternal IDE schism. Who truly commands the syntax streams?",
+    "fileName": "post-1767834273300-5.html",
+    "dateStr": "1/8/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20neutral%20comparison%20of%20Vim%20and%20Emacs%20from%20the%20perspective%20of%20a%20long-time%20developer%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767834273300"
+  },
+  {
+    "title": "POD PROTOCOL FAILURE: Your Kubernetes Pods Are Glitching & We Know WHY! (SECRET FIX INSIDE!)",
+    "summary": "Unleash your inner chrome-plated sysadmin! This guide deciphers the cryptic signals of dying Kubernetes pods, offering a hyper-optimized path to system stability. Debugging is no longer a dark art; it's a science of digital resurrection.",
+    "fileName": "post-1767834257395-4.html",
+    "dateStr": "1/8/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20practical%20guide%20to%20debugging%20Kubernetes%20Pods%20and%20getting%20useful%20signals%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767834257395"
+  },
+  {
+    "title": "WebSocket Handshake: Unlock the Cyberspace Data Stream or Get De-rezzed!",
+    "summary": "Dive deep into the underbelly of real-time communication. We tear apart the WebSocket handshake protocol and reveal the pulsing heart of its frame-based data transfer, leaving your neural implants buzzing with knowledge.",
+    "fileName": "post-1767834241968-3.html",
+    "dateStr": "1/8/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20practical%20deep%20dive%20into%20how%20the%20WebSocket%20handshake%20and%20frames%20actually%20work%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767834241968"
+  },
+  {
+    "title": "CYBER-ZEN: Hack Your Brain For MAXIMUM DEV FOCUS With Minimalist Gear!",
+    "summary": "Unlock peak cognitive performance in your data-den with our guide to minimalist developer spaces. Streamline your bio-neural interface and eliminate ambient distractions for hyper-efficient code generation.",
+    "fileName": "post-1767834225382-2.html",
+    "dateStr": "1/8/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Designing%20a%20minimalist%20developer%20workspace%20that%20still%20boosts%20focus%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767834225382"
+  },
+  {
+    "title": "UNLEASH THE METRIC GODS: Prometheus & Grafana - Your Cyber-Soul's Data Oracle!",
+    "summary": "Upgrade your corporate neural net with hyper-efficient Prometheus and Grafana infrastructure monitoring. Decode the digital ether for peak performance, lest the data-kraken consumes you.",
+    "fileName": "post-1767834210049-1.html",
+    "dateStr": "1/8/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Setting%20up%20effective%20infrastructure%20monitoring%20with%20Prometheus%20and%20Grafana%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767834210049"
+  },
+  {
     "title": "OVERLOADED SERVERS? UNLOCK INSTANT DATA FLOW with RADICAL REDIS HACKS!",
     "summary": "Crush latency and achieve quantum data velocity. This is your brain on Redis.",
     "fileName": "post-1767747890379-5.html",
