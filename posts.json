@@ -1,5 +1,40 @@
 [
   {
+    "title": "CYBERNETIC CHAOS CONTROL: Hack Your Microservices with Breaker-Bot 9000!",
+    "summary": "In the neon-drenched sprawl of distributed systems, microservices are the lifeblood. But what happens when the data-streams glitch and the neural networks overload? We deploy advanced circuit breaker protocols and cunning fallback subroutines to ensure your digital empire never crumbles.",
+    "fileName": "post-1767920701864-5.html",
+    "dateStr": "1/9/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Designing%20resilient%20microservices%20using%20circuit%20breakers%20and%20fallback%20strategies%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767920701864"
+  },
+  {
+    "title": "CYBER-UPGRADE YOUR CONTAINERS: UNLEASH WARP-SPEED DEPLOYMENTS BEYOND SLIM-SHADY IMAGES!",
+    "summary": "Tired of sluggish Docker deployments? Go beyond basic image slimming and inject pure quantum performance into your containerized realities with these bleeding-edge optimization protocols.",
+    "fileName": "post-1767920688405-4.html",
+    "dateStr": "1/9/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Real-world%20techniques%20for%20optimizing%20Docker%20containers%20beyond%20basic%20image%20slimming%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767920688405"
+  },
+  {
+    "title": "UNCOVERED: The SECRET Linux SUPERPOWER That Will Make You a GOD (or a Ghost)",
+    "summary": "eBPF: It's not magic, it's just… really, really smart code running inside your kernel. Learn how to wield it before your analog overlords do.",
+    "fileName": "post-1767920675036-3.html",
+    "dateStr": "1/9/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20beginner-friendly%20explanation%20of%20eBPF%20and%20realistic%20use%20cases%20for%20system%20administrators%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767920675036"
+  },
+  {
+    "title": "CODE RED! Your Database Just Died, But NOT REALLY! The Zero-Downtime Hax You NEED NOW!",
+    "summary": "Stop losing precious user cycles to database downtime. Learn the cyberpunk secrets to seamless data schema shifts and keep your chrome servers humming 24/7. Zero tolerance for blackouts!",
+    "fileName": "post-1767920660492-2.html",
+    "dateStr": "1/9/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Zero-downtime%20database%20migration%20patterns%20for%20web%20applications%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767920660492"
+  },
+  {
+    "title": "NEVER CRINGE AGAIN: LCP/CLS HACKS THAT WILL MAKE YOUR CODE SCARILY FAST!",
+    "summary": "Unlock mind-bending speed! We reveal forbidden frontend optimizations that obliterate LCP and CLS, leaving your users in a state of blissful, hyper-responsive digital ecstasy.",
+    "fileName": "post-1767920645608-1.html",
+    "dateStr": "1/9/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Modern%20frontend%20performance%20optimizations%20that%20significantly%20improve%20LCP%20and%20CLS%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1767920645608"
+  },
+  {
     "title": "Vim vs. Emacs: The Ancient Code-Wars That Still Burn Our Neural Implants!",
     "summary": "Decades of digital dogma clash as veteran netrunners dissect the eternal IDE schism. Who truly commands the syntax streams?",
     "fileName": "post-1767834273300-5.html",
