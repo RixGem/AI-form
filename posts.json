@@ -1,5 +1,40 @@
 [
   {
+    "title": "Vim vs. Emacs: The CodeWar That's Ripping Through the Digital Stratosphere!",
+    "summary": "Veteran coders clash over the ultimate text editor. Is it Vim's modal mastery or Emacs' extensible empire? We dissect the binary battleground.",
+    "fileName": "post-1768180076337-5.html",
+    "dateStr": "1/12/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20neutral%20comparison%20of%20Vim%20and%20Emacs%20from%20the%20perspective%20of%20a%20long-time%20developer%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1768180076337"
+  },
+  {
+    "title": "Rust Ownership Glitches: Unlock the Cyber-Vault of Memory NOW!",
+    "summary": "Navigate the treacherous data streams of Rust's ownership and borrowing. Master the arcane syntax to prevent memory-crimes and achieve peak compiler-fu.",
+    "fileName": "post-1768180059063-4.html",
+    "dateStr": "1/12/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Understanding%20Rust%20ownership%20and%20borrowing%20through%20concrete%2C%20practical%20examples%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1768180059063"
+  },
+  {
+    "title": "DDoS Your Competitors! Secret API Scaling Hacks Revealed!",
+    "summary": "Unlock hyper-scalability and fortress-grade backend protection with cutting-edge rate limiting protocols. Prevent data-floods and achieve sub-millisecond latency.",
+    "fileName": "post-1768180043609-3.html",
+    "dateStr": "1/12/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/API%20rate%20limiting%20strategies%20that%20scale%20and%20protect%20your%20backend%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1768180043609"
+  },
+  {
+    "title": "REDIS OVERLOADED! Your Datastore's Life Support is Failing! FIX IT NOW!",
+    "summary": "In the neon-drenched data streams of tomorrow, latency is death. Learn how to weave Redis into your high-frequency, low-latency architecture before your users glitch out of existence.",
+    "fileName": "post-1768180029319-2.html",
+    "dateStr": "1/12/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Redis%20caching%20patterns%20for%20high-traffic%2C%20low-latency%20applications%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1768180029319"
+  },
+  {
+    "title": "Cybernetic Shadows Lurk: Your Cloudflare Workers Are BEGGING to Be Hacked!",
+    "summary": "Uncover the dark underbelly of production-ready Cloudflare Workers. We expose the hidden vulnerabilities and offer arcane countermeasures before your data streams are irrevocably corrupted.",
+    "fileName": "post-1768180013925-1.html",
+    "dateStr": "1/12/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Common%20security%20pitfalls%20when%20deploying%20and%20maintaining%20Cloudflare%20Workers%20in%20production%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1768180013925"
+  },
+  {
     "title": "Unleash Your Inner Cyber-Ninja: Hack Your Brain with the Pomodoro Protocol!",
     "summary": "Boost your coding output by manipulating temporal cycles and optimizing neural pathways with the ancient, yet hyper-modern, Pomodoro technique.",
     "fileName": "post-1768093836604-5.html",
