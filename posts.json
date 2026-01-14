@@ -1,5 +1,40 @@
 [
   {
+    "title": "Vim vs. Emacs: The Code War That Will Hack Your Brain Cells!",
+    "summary": "Two monolithic text editors, eternal rivals in the cyber-dojo of code. Which one will reign supreme in the digital apocalypse? A grizzled netrunner's dispassionate data-stream.",
+    "fileName": "post-1768352817555-5.html",
+    "dateStr": "1/14/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/A%20neutral%20comparison%20of%20Vim%20and%20Emacs%20from%20the%20perspective%20of%20a%20long-time%20developer%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1768352817555"
+  },
+  {
+    "title": "NEURALINK YOUR DESK: MAXIMIZE CODING OUTPUT WITH CYBERNETIC MINIMALISM!",
+    "summary": "Unlock peak cognitive flow by de-cluttering your bio-digital interface. Learn how to optimize your physical and mental architecture for hyper-productivity.",
+    "fileName": "post-1768352800408-4.html",
+    "dateStr": "1/14/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Designing%20a%20minimalist%20developer%20workspace%20that%20still%20boosts%20focus%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1768352800408"
+  },
+  {
+    "title": "Cloudflare Worker Catastrophe Averted! EXPOSED: The Cyber-Sleazeball Tactics Devs Use to Screw Up Prod!",
+    "summary": "Don't let your serverless dreams become a digital nightmare! We decrypt the hidden vulnerabilities in your Cloudflare Workers deployments, straight from the neon-drenched underbelly of the net.",
+    "fileName": "post-1768352785957-3.html",
+    "dateStr": "1/14/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Common%20security%20pitfalls%20when%20deploying%20and%20maintaining%20Cloudflare%20Workers%20in%20production%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1768352785957"
+  },
+  {
+    "title": "CRACK THE CODE: Your Docker Containers Are BLEEDING CYBER-RESOURCES! Unseen Hacks REVEALED!",
+    "summary": "Stop letting your containers gorge on precious gigabytes and latency cycles. This expose dives deep into advanced Docker optimization, pushing your microservices past the point of mere 'slimming' into pure, unadulterated, zero-overhead efficiency. Prepare for a paradigm shift.",
+    "fileName": "post-1768352771480-2.html",
+    "dateStr": "1/14/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Real-world%20techniques%20for%20optimizing%20Docker%20containers%20beyond%20basic%20image%20slimming%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1768352771480"
+  },
+  {
+    "title": "Unlock Your Code's True Potential: Master TypeScript Generics Before the Algorithm Does!",
+    "summary": "Tired of type chaos? Learn how to wrangle advanced TypeScript generics and future-proof your codebase against the coming neural network overlords.",
+    "fileName": "post-1768352755070-1.html",
+    "dateStr": "1/14/2026",
+    "imageUrl": "https://image.pollinations.ai/prompt/Making%20sense%20of%20advanced%20TypeScript%20generics%20in%20everyday%20codebases%20cyberpunk%20tech%20glitch?width=800&height=400&nologo=true&seed=1768352755070"
+  },
+  {
     "title": "Hack Your VPS! 5 MANDATORY Linux Tricks for 2025 (Before the Glitch Gods Strike!)",
     "summary": "Keep your low-rent server humming in the neon jungle. Essential maintenance for the digital underclass.",
     "fileName": "post-1768266061596-5.html",
